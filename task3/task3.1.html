@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Details</title>
+    <link rel="stylesheet" href="task3.1.css">
+    <script src="task3.1.js"></script>
+</head>
+<body>
+    <h1 class="title">Employee Details</h1>
+    
+    <div class="dataentry">
+        <input type="text" id="employeeName" placeholder="Name" >
+        <input type="number" id="employeeAge" placeholder="Age">
+        <input type="tel" id="employeeNumber" placeholder="Phone Number">
+        <input type="email" id="employeeEmail" placeholder="Email">
+        <button class="submit" onclick="submitForm()">Submit</button>
+        <button class="submit" id="newSubmissionBtn" style="display: none;" onclick="showNewSubmissionForm()">New Submission</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Serial No.</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+
+    <script src="task3/task3.js"></script>
+</body>
+</html>

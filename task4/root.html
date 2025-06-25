@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root</title>
+</head>
+<body>
+    <h3> Squate/cube Root calculator </h3>
+    <input type="number" id="NUMBER" placeholder="Number">
+    <button id="sqrtbtn" onclick="Sqrt()">Square Root</button>
+    <button id="cube root btm" onclick="cubeRoot()">Cube Root </button>
+
+    <p id="output"></p>
+    <script>
+        
+        
+        function Sqrt(){
+            
+            var number =  document.getElementById("NUMBER").value;
+            var final = Math.sqrt(number);
+             if (Number.isInteger(final)) {
+            document.getElementById('output').innerHTML = "Square root is: " + final;
+        }else{
+                alert("No square root")
+            }
+        }
+        
+        function cubeRoot(){
+            
+            var number =  document.getElementById("NUMBER").value;
+            var final = Math.cbrt(number);
+            if (Number.isInteger(final)) {
+            document.getElementById('output').innerHTML = "Cube root is: " + final;
+        }else{
+           alert("no cube root") 
+        };
+            
+        }
+    </script>
+</body>
+</html>

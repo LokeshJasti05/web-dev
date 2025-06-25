@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="task1.css">
+</head>
+<body>
+    <style>
+        .oval, .sphere, .rectangle, .rhombus {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .shape-name, .shape-action {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            color: #fff;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+            font-size: 14px;
+            pointer-events: none;
+        }
+        .shape-name {
+            top: 30%;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .shape-action {
+            top: 55%;
+            font-size: 12px;
+        }
+        .oval .shape-name, .oval .shape-action {
+            color: #fff;
+        }
+        .sphere .shape-name, .sphere .shape-action {
+            color: #fff;
+        }
+        .rectangle .shape-name, .rectangle .shape-action {
+            color: #fff;
+        }
+        .rhombus .shape-name, .rhombus .shape-action {
+            color: #333;
+            text-shadow: 0 1px 4px rgba(255,255,255,0.7);
+        }
+    </style>
+    <div class="oval">
+        <div class="shape-name">Oval</div>
+        <div class="shape-action">Goes up and down while changing color</div>
+    </div>
+    <div class="sphere">
+        <div class="shape-name">Sphere</div>
+        <div class="shape-action">Moves diagonally while changing color</div>
+    </div>
+    <div class="rectangle">
+        <div class="shape-name">Rectangle</div>
+        <div class="shape-action">Transforms into a rhombus shape</div>
+    </div>
+    <div class="rhombus">
+        <div class="shape-name">Parallelogram</div>
+        <div class="shape-action">Moves in a zig zag pattern</div>
+    </div>
+</body>
+</html>

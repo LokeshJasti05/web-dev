@@ -1,0 +1,116 @@
+.dataentry {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    align-items: center;
+    gap: 10px;
+}
+
+.title {
+    text-align: center;
+    color: #5D4037;
+}
+
+body {
+    background-color: cornsilk;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.submit {
+    display: flex;
+    margin: 0 auto;
+    background-color: #9CAF88;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 14px;
+    color: white;
+    font-weight: bold;
+}
+
+.submit:hover {
+    background-color: #7A9A6C;
+    cursor: pointer;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #9CAF88;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.edit-btn, .copy-btn, .delete-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+}
+
+.edit-btn {
+    background-color: #2196F3;
+}
+
+.copy-btn {
+    background-color: #4CAF50;
+}
+
+.delete-btn {
+    background-color: #f44336;
+}
+
+.edit-btn:hover {
+    background-color: #1976D2;
+}
+
+.copy-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-btn:hover {
+    background-color: #d32f2f;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="tel"],
+input[type="email"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 200px;
+}
+
+.edit-input {
+    width: 100%;
+    padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+p {
+    margin: 0;
+    padding: 4px 0;
+}

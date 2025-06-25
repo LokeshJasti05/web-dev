@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial</title>
+</head>
+<body>
+    <h3>Factorial</h3>
+    <div class="inputfield">
+        <label for="number">Number</label>
+        <input type="number" id="number" placeholder="Enter a number">
+        <button onclick="calculateFactorial()">Calculate Factorial</button>
+    </div>
+
+    <div class="outputfield">
+        <h3>The Factorial of the given Number is <p id="output2"></p></h3>
+    </div>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .inputfield {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .inputfield button {
+            padding: 5px 10px;
+            color: rgb(153, 36, 36);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .outputfield {
+            margin-top: 20px;
+        }
+        </style>
+        <script>
+            function calculateFactorial(){
+                var number = document.getElementById("number").value; // Clear previous output
+                var factorial = 1;
+                for(var i = 1; i <= number; i++) {
+                    factorial *= i;
+                }
+                document.getElementById("output2").innerHTML = factorial;
+            }
+        </script>
+</body>
+</html>

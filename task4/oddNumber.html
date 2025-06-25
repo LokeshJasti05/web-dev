@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odd number</title>
+</head>
+<body>
+    <h3>ODD NUMBER</h3>
+    <div class="inputfield">
+        <label for="number">Enter a number:</label>
+        <input type="number" id="number" placeholder="Enter a number">
+        <button onclick="checkOdd()">Check Odd</button>
+        <br>
+        <p class="outputfield" id="output"></p>
+    </div>
+
+    <style>
+        body{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        .inputfield{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .inputfield button{
+            padding: 5px 10px;
+            color: rgb(153, 36, 36);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .outputfield{
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        function checkOdd(){
+            var number = document.getElementById("number").value;
+            if(number%2==0){
+                document.getElementById("output").textContent = "The number is even.";
+            }
+            else{
+                document.getElementById("output").textContent = "the number is odd.";
+            }
+        }
+    </script>
+</body>
+</html>

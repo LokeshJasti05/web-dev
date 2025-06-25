@@ -1,0 +1,39 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check First and last</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="string" placeholder="Enter a string">
+        <br/>
+        <input type="text"  maxlength="1" id="first" placeholder="Enter a first alphabet">
+        <br/>
+        <input type="text"  maxlength="1" id="last" placeholder="Enter a last alphabet">
+        <button onclick="checkFirstAndLast()">Check</button>
+    </div>
+    <div id="result"></div>
+
+    <script>
+        function checkFirstAndLast() {
+            var str = document.getElementById("string").value;
+            var first = document.getElementById("first").value;
+            var last = document.getElementById("last").value;
+
+            if(str.charAt(0) == first && str.charAt(str.length - 1) == last) {
+                document.getElementById("result").innerHTML = "Given String starts and ends with the given charectors";
+            } else if(str.charAt(0) == first && str.charAt(str.length - 1) != last) {
+                document.getElementById("result").innerHTML = "The first character is " + first + " but the last charector is not " + last;
+            }else if(str.charAt(0)!=first && str.charAt(str.length-1)==last){
+                document.getElementById("result").innerHTML= "the first charecter is not " + first + "but last charector is " + last; 
+            }else{
+                document.getElementById("result").innerHTML = "Neither first nor last is same"
+            }
+        }
+    </script>
+</body>
+</html>

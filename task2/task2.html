@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Details Form</title>
+    <link rel="stylesheet" href="task2.css">
+    <script src="task2.js"></script>
+</head>
+<body>
+    <div class="container">
+        <form id="inputForm" class="form-section">
+            <h2>Enter Your Details</h2>
+            <div class="form-group">
+                <label for="nameInput">Name:</label>
+                <input type="text" id="nameInput" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="emailInput">Email:</label>
+                <input type="email" id="emailInput" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="ageInput">Employee ID:</label>
+                <input type="number" id="ageInput" placeholder="Enter your age" required>
+            </div>
+            <div class="form-group">
+                <label for="cityInput">Company Name:</label>
+                <input type="text" id="cityInput" placeholder="Enter your city" required>
+            </div>
+            <div class="form-group">
+                <label for="genderInput">Gender:</label>
+                <select id="genderInput" required>
+                    <option value="">Select gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                    <option value="prefer-not-to-say">Prefer not to say</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Resume:</label>
+                <input type="file" id="resumeInput" accept=".pdf,.doc,.docx" required>
+            </div>
+            <button type="submit" id="submitBtn">Submit</button>
+        </form>
+
+        <!-- Display Form - Initially hidden -->
+        <div id="displayForm" class="form-section"  ">
+            <h2>Your Details</h2>
+            <div class="detail-group" >
+                <label>Name:</label>
+                <input type="text" id="displayName" class="display-input" readonly>
+            </div>
+            <div class="detail-group">
+                <label>Email:</label>
+                <input type="email" id="displayEmail" class="display-input" readonly>
+            </div>
+            <div class="detail-group">
+                <label>Employee ID:</label>
+                <input type="number" id="displayAge" class="display-input" readonly>
+            </div>
+            <div class="detail-group">
+                <label>Company Name:</label>
+                <input type="text" id="displayCity" class="display-input" readonly>
+            </div>
+            <div class="detail-group">
+                <label>Gender:</label>
+                <select id="displayGender" class="display-input" disabled>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                    <option value="prefer-not-to-say">Prefer not to say</option>
+                </select>
+            </div>
+            <button id="editBtn" class="edit">Edit Details</button>
+            <button id="saveBtn" class="save" style="display: none;">Save Changes</button>
+        </div>
+    </div>
+</body>
+</html>

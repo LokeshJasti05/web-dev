@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARRAY METHODS</title>
+    <script src="arraymethods.js"></script>
+</head>
+<body>
+<div class="basic_methods">
+    <h3>Array Methods usage</h3>
+    <p id="arrayName" ></p>
+    <input type="text" id="push" placeholder="Enter name to add">
+    <button class="btn" onclick="arrayPush()">push me</button>
+    <button class="btn" onclick="arrayPop()">pop me</button>
+    <button class="btn" onclick="getLength()">getLength</button>
+    <p id="lengthResult"></p>
+    <input type="text" id="index" placeholder="Enter name to find index">
+    <button class="btn" onclick="findIndex()">Find Index</button>
+    <p id="findResult"></p>
+    <button class="btn" onclick="join()">Join</button>
+    <button class="btn" onclick="shift()">shift</button>
+    <input type="text" id="unshift" placeholder="Enter name to unshift">
+    <button class="btn" onclick="unshift()">unshift</button>
+    <input type="text" id="concat" placeholder="Enter array to concat">
+    <button class="btn" onclick="concat()">Concat</button>
+    <button class="btn" onclick="slice()">Slice</button>
+    <p id="slicedArray"></p>
+    <input type="text" id="splicer" placeholder="Enter name to splice">
+    <button class="btn" onclick="splice()">Splice</button>
+    <p id="splicedArray"></p>
+</div>
+
+<div class="searchMethods">
+    <h3>Search Methods</h3>
+    <p id="output"></p>
+    <input type="text" id="findLastIndex" placeholder="Enter name to find  last index">
+    <button class="btn" onclick="findLastIndex()">Find Last Index</button>
+    <input type="text" id="includes" placeholder="Enter name to includes">
+    <button class="btn" onclick="includes()">Includes</button>
+    <input type="text" id="finder" placeholder="Enter name to find">
+    <button class="btn" onclick="find()">Find</button>
+
+</div>
+    
+</body>
+</html>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .basic_methods, .searchMethods {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .arrayName{
+        font-size: 20px;
+        font-weight: bold;
+        color: #000;
+        justify-content: center;
+        align-items: center;
+    }
+    .btn{
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        min-width: 120px;
+    }
+
+    /* Create a container for buttons to display in 2 columns */
+    .button-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    /* For input and button pairs */
+    .input-button-pair {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    /* For buttons without inputs */
+    .button-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        width: 100%;
+        margin: 10px 0;
+    }
+</style>
+
+<script>
+    
+    document.getElementById("arrayName").innerHTML = array.toString();
+
+</script>

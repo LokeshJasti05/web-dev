@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do while</title>
+</head>
+<body>
+    <h3>Divisible by 2</h3>
+    <input type="number" id="input" placeholder="Enter any number">
+    <button onclick="check()">check</button>
+    <p id="output"></p>
+
+    <style>
+        body{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        input{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        button{
+            padding: 5px 10px;
+            color: rgb(153, 36, 36);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .output{
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        function check() {
+            let number = Number(document.getElementById("input").value);
+            let result = "";
+            
+            do {
+                if (number % 2 === 0) {
+                    result = "Number is divisible by 2";
+                    break;
+                } else {
+                    result = "Number is not divisible by 2";
+                    break;
+                }
+            } while (number % 2 === 0);
+            
+            document.getElementById("output").innerHTML = result;
+        }
+    </script>
+</body>
+</html>

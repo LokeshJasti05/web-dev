@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Details Form</title>
+    <link rel="stylesheet" href="task2.1.css">
+    <script src="task2.1.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Input Form -->
+        <form id="inputForm" class="form-section">
+            <h2>Input Form</h2>
+            <div class="form-group">
+                <label for="companyName">Company Name:</label>
+                <input type="text" id="companyName" placeholder="Enter company name" required>
+            </div>
+            <div class="form-group">
+                <label for="companyEmail">Company Email:</label>
+                <input type="email" id="companyEmail" placeholder="Enter company email" required>
+            </div>
+            <div class="form-group">
+                <label for="joiningDate">Joining Date:</label>
+                <input type="date" id="joiningDate" required>
+            </div>
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input type="text" id="city" placeholder="Enter city" required>
+            </div>
+            <div class="form-group">
+                <label for="companyFile">Company Document:</label>
+                <input type="file" id="companyFile" accept=".pdf,.doc,.docx" required>
+            </div>
+            <button type="button" id="saveBtn">Save</button>
+            <button type="button" id="resetBtn" class="reset">New Submission</button>
+        </form>
+
+        <!-- Display Form -->
+        <div id="displayForm" class="form-section">
+            <h2>Your Details</h2>
+            <div id="displayContent" style="display: none;">
+                <div class="detail-group">
+                    <label>Company Name:</label>
+                    <p id="displayCompanyName" class="display-text"></p>
+                </div>
+                <div class="detail-group">
+                    <label>Company Email:</label>
+                    <p id="displayCompanyEmail" class="display-text"></p>
+                </div>
+                <div class="detail-group">
+                    <label>Joining Date:</label>
+                    <p id="displayJoiningDate" class="display-text"></p>
+                </div>
+                <div class="detail-group">
+                    <label>City:</label>
+                    <p id="displayCity" class="display-text"></p>
+                </div>
+                <div class="detail-group">
+                    <label>Document Type:</label>
+                    <p id="displayFileType" class="display-text"></p>
+                </div>
+                <button id="editBtn" class="edit" style="display: none;">Edit Details</button>
+            </div>
+            
+            <!-- Edit Form -->
+            <div id="editForm" class="form-section" style="display: none;">
+                <h2>Edit Details</h2>
+                <div class="form-group">
+                    <label for="editCompanyName">Company Name:</label>
+                    <input type="text" id="editCompanyName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editCompanyEmail">Company Email:</label>
+                    <input type="email" id="editCompanyEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="editJoiningDate">Joining Date:</label>
+                    <input type="date" id="editJoiningDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="editCity">City:</label>
+                    <input type="text" id="editCity" required>
+                </div>
+                <button type="button" id="saveChangesBtn" class="save-changes">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Remove the old edit form and overlay -->
+</body>
+</html> 

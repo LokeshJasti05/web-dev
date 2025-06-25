@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> number generator</title>
+</head>
+<body>
+    <h3> NUMBER generator</h3>
+    <div class="inputfield">
+        <label for="number">Enter number length:</label>
+        <input type="number" id="number" placeholder="Enter number length">
+        <button onclick="random()">Generate</button>
+        <br>
+        <p class="outputfield" id="output"></p>
+    </div>
+
+    <style>
+        body{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+
+        .inputfield{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .inputfield button{
+            padding: 5px 10px;
+            color: rgb(153, 36, 36);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .outputfield{
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        function random(){
+            var numbers = document.getElementById("number").value;
+            var generated_number = Math.pow(10,numbers)
+            var random = Math.floor(Math.random() * generated_number);
+            document.getElementById("output").textContent=random;
+        }
+    </script>
+</body>
+</html>

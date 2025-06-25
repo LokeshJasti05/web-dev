@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>triangle</title>
+</head>
+<body>
+    <h4>Calculating area of triangle</h4>
+    <div class="inputs">
+        <label for="base"> base </label>
+        <input type="number"  id="base" placeholder="Base">
+        <label for="height"> height </label>
+        <input type="number" id="height" placeholder="Height">
+        <button type="submit" onclick="calculateArea()">Calculate Area</button>
+    </div>
+    <div class="output">
+        <h4>Area of triangle is: <span id="area"></span></h4>
+    </div>
+
+    <style>
+       body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+
+    .inputs {
+      display: flex;
+        flex-direction: column;
+        gap:2px;
+    }
+    .inputs button {
+        margin-top: 10px;
+        padding: 5px 10px;
+        color: rgb(153, 36, 36);
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    </style>
+    <script>
+
+        function calculateArea(){
+            var base = document.getElementById("base").value;
+            var height = document.getElementById("height").value;
+            var area = 0.5 * base * height;
+            document.getElementById("area").textContent = area;
+        }
+    </script>
+</body>
+</html>

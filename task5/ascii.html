@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="input">
+        <h3>Enter String</h3>
+        <input type="text" id="string" placeholder="Enter string">
+        <button onclick="Aschi()" >Submit</button>
+    </div>
+    <div class="output">
+        <p id="aschii"></p>
+
+        <p id="binary"></p>
+
+        <p id="hexadecimal"></p>
+    </div>
+
+
+    <script>
+        function Aschi() {
+             const input = document.getElementById("string").value;
+            
+            if (!input) {
+                alert("Please enter a string");
+                return;
+            }
+
+            const asciiArray = [];
+            const binaryArray = [];
+            const decimalArray = [];
+            const hexArray = [];
+
+            for (let i = 0; i < input.length; i++) 
+            {
+                let ascii = input.charCodeAt(i);
+                asciiArray.push(ascii);
+                binaryArray.push(DectoBin(ascii));
+                hexArray.push(BinToHex(binaryArray[i]))
+            }
+
+    document.getElementById("aschii").innerHTML = "ASCII: " + asciiArray.join(" ");
+    document.getElementById("binary").innerHTML = "Binary: " + binaryArray.join("   ");
+    
+    
+}
+
+
+function DectoBin(input) {
+    if (input == 0) return "0";
+
+    let result = [];
+
+    while (input > 0) {
+        let remainder = input % 2;
+        input = Math.floor(input / 2);
+        result.push(remainder);
+    }
+
+    return result.reverse().join("");
+}
+
+function BinToHex(input){
+            var check = input.length % 4;
+            var result = [];
+            if(check !== 0){
+                input = checking(input, check);
+            }
+
+            result = MakeHexa(input);
+            
+            document.getElementById("hexadecimal").innerHTML = "Hexadecimal: "+ result.join("");
+        }
+
+function checking(input, check){
+            if(check == 3){
+                input = "0" + input;
+            }
+            if(check == 2){
+                input = "00" + input;
+            }
+            if(check == 1){
+                input = "000" + input;
+            }
+            return input;
+        }
+
+function MakeHexa(input){
+            var result = [];
+            
+            for(let i = 0; i <= input.length-4; i += 4) {
+                let chunk = input.slice(i, i + 4);
+
+                switch(chunk){
+                    case "0000":
+                        result.push("0");
+                        break;
+                    case "0001":
+                        result.push("1");
+                        break;
+                    case "0010":
+                        result.push("2");
+                        break;
+                    case "0011":
+                        result.push("3");
+                        break;
+                    case "0100":
+                        result.push("4");
+                        break;
+                    case "0101":
+                        result.push("5");
+                        break;
+                    case "0110":
+                        result.push("6");
+                        break;
+                    case "0111":
+                        result.push("7");
+                        break;
+                    case "1000":
+                        result.push("8");
+                        break;
+                    case "1001":    
+                        result.push("9");
+                        break;
+                    case "1010":
+                        result.push("A");
+                        break;
+                    case "1011":
+                        result.push("B");   
+                        break;
+                    case "1100":
+                        result.push("C");
+                        break;
+                    case "1101":
+                        result.push("D");
+                        break;
+                    case "1110":
+                        result.push("E");
+                        break;
+                    case "1111":
+                        result.push("F");
+                        break;
+                }
+            }
+            return result;
+        }
+    </script>
+</body>
+</html>

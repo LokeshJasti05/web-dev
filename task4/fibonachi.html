@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci</title>
+</head>
+<body>
+    <h3>Fibonacci</h3>
+    <div class="input">
+        <input type="number" id="num" placeholder="Enter a number">
+        <button onclick="fibonachi()">Find Fibonacci</button>
+    </div>
+    <div class="output">
+        <h3>Fibonacci is: </h3>
+        <p id="array"></p>
+    </div>
+    <div class="output">
+        <h3>Fibonacci number is: </h3>
+        <p id="output"></p>
+    </div>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .input {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .input button {
+            padding: 5px 10px;
+            color: rgb(153, 36, 36);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+    </style>
+
+    <script>
+        function fibonachi() {
+            var num = document.getElementById("num").value;
+            var a = 0, b = 1, c;
+            var result = [0,1];
+           for(var i = 2; i <= num; i++) {
+                var c = result.length;
+                result[c] = result[c - 1] + result[c - 2];
+                /* c= a+b;
+                result.push(c);
+                a = b;
+                b = c;*/
+           }
+           document.getElementById("array").textContent = result
+           document.getElementById("output").textContent = c;
+           
+        }
+    </script>
+</body>
+</html>

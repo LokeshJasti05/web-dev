@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <div class="box">
+        <div id="display">0</div>
+        <div id="buttons">
+        <button id="1" onclick="appendNumber(1)">1</button>
+        <button id="2" onclick="appendNumber(2)">2</button>
+        <button id="3" onclick="appendNumber(3)">3</button>
+        
+        <button id="+" onclick="setOperator('+')">+</button>
+        <button id="4" onclick="appendNumber(4)">4</button>
+        <button id="5" onclick="appendNumber(5)">5</button>
+        <button id="6" onclick="appendNumber(6)">6</button>
+        
+        <button id="-" onclick="setOperator('-')">-</button>
+        <button id="7" onclick="appendNumber(7)">7</button>
+        <button id="8" onclick="appendNumber(8)">8</button>
+        <button id="9" onclick="appendNumber(9)">9</button>
+        
+        <button id="*" onclick="setOperator('*')">*</button>
+        <button id="." onclick="appendNumber('.')">.</button>
+        
+        <button id="0" onclick="appendNumber(0)">0</button>
+        <button></button>
+        
+        <button id="/" onclick="setOperator('/')">/</button>
+        <button></button>
+        
+        
+        <button id="%" onclick="setOperator('%')">%</button>
+        <button class="cleardisplay" onclick="clearDisplay()"> clear</button>
+        <button id="=" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <style>
+        .box{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        #display{
+            width: 300px;
+            height: 100px;
+            background-color: #474747;
+            color: white;
+            font-size: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }  
+        #buttons{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            width: 300px;
+            padding: 20px;
+        }
+        button{
+            padding: 20px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color: #e0e0e0;
+        }
+        
+    </style>
+
+    <script>
+        var currentDisplay = "0";
+        var global_operator = "";
+        var firstNumber = 0;
+
+        function appendNumber(number){
+            if (number == '.' && currentDisplay.includes('.')) {
+                return; 
+            }
+            if(currentDisplay == "0" ){
+                currentDisplay = number.toString();
+            } else {
+                currentDisplay += number.toString();
+            }
+            document.getElementById("display").textContent = currentDisplay;
+        }
+        
+        function addOperator(operator){
+            document.getElementById("display").textContent += operator;
+        }
+
+        function setOperator(operator){
+            firstNumber = parseFloat(currentDisplay);
+            global_operator = operator;
+            currentDisplay = "0";
+            addOperator(operator);
+
+        }
+        
+    
+        function calculate(){
+            if (global_operator === '') {
+                return;
+            }
+
+            var secondNumber = parseFloat(currentDisplay);
+            var result = 0;
+            
+            switch(global_operator){
+                case "+":
+                    result = firstNumber + secondNumber;
+                    break;
+                case "-":
+                    result = firstNumber - secondNumber;
+                    break;
+                case "*":
+                    result = firstNumber * secondNumber;
+                    break;
+                case "/":
+                    if(secondNumber !== 0){
+                        result = firstNumber / secondNumber;
+                    } else {
+                        alert("Cannot divide by zero!");
+                        clearDisplay();
+                        return;
+                    }
+                    break;
+                case "%":
+                    result = firstNumber % secondNumber;
+                    break;
+                default:
+                    return;
+            }
+            if (!Number.isInteger(result)) {
+                result = result.toFixed(2);
+            }
+            currentDisplay = result.toString();
+            document.getElementById("display").textContent = currentDisplay;
+            firstNumber = parseFloat(result);
+            global_operator = "";
+        }
+
+        function clearDisplay(){
+            currentDisplay = "0";
+            global_operator = "";
+            firstNumber = 0;
+            document.getElementById("display").textContent = currentDisplay;
+        }
+    </script>
+</body>
+</html>

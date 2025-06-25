@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas</title>
+</head>
+<body>
+    <div class="main">
+        <input type="text" id="date" placeholder="date">
+        <input type="text" id="month" placeholder="month">
+        <input type="text" id="year" placeholder="year">
+        <button onclick="christmas()">find how many days left</button>
+
+        <p id="output"></p>
+    </div>
+    <div id="tree"></div>
+    <style>
+        .main{
+             display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+    </style>
+    <script>
+        function christmas(){
+            var date = parseInt(document.getElementById("date").value);
+            var month = parseInt(document.getElementById("month").value);
+            var year = parseInt(document.getElementById("year").value);
+            
+            if(month > 12 || month < 1){
+                alert("Invalid month");
+                return;
+            }
+            
+            if(month == 2 && date > 28){
+                alert("Invalid date for February");
+                return;
+            }
+            if((month == 4 || month == 6 || month == 9 || month == 11) && date > 30){
+                alert("Invalid date for this month");
+                return;
+            }
+            if((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && date > 31){
+                alert("Invalid date for this month");
+                return;
+            }
+            
+            var christmasDate = 359;   
+            
+
+            var count_days = finddays(month) + date;
+
+            if(count_days < christmasDate){
+            var days_left = christmasDate - count_days;
+            }
+            if(count_days > christmasDate){
+                var days_passed= christmasDate - count_days;
+                var days_left = 365 - days_passed;
+            }
+            document.getElementById("output").innerHTML = "Christmas is in " + days_left + " days";
+        }
+
+        function finddays(input){
+            switch(input){
+                case 1:
+                    return 0;
+                    break;
+                case 2:
+                    return 31;
+                    break;
+                case 3:
+                    return 31+28;
+                    break;
+                case 4:
+                    return 31+28+31;
+                    break;
+                case 5:
+                    return 31+28+31+30;
+                    break;
+                case 6:
+                    return 31+28+31+30+31;
+                    break;
+                case 7:
+                    return 31+28+31+30+31+30;
+                    break;
+                case 8:
+                    return 31+28+31+30+31+30+31;
+                    break;
+                case 9:
+                    return 31+28+31+30+31+30+31+31;
+                    break;
+                case 10:
+                    return 31+28+31+30+31+30+31+31+30;
+                    break;
+                case 11:
+                    return 31+28+31+30+31+30+31+31+30+31;
+                    break;
+                case 12:
+                    return 31+28+31+30+31+30+31+31+30+31+30;
+                    break;
+                default:
+                    return 0;
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

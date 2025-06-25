@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Display</title>
+</head>
+<body>
+    <h3>Date</h3>
+    <div class="btn">
+        <button onclick="getDate()">Get  Local Date</button>
+        <button onclick="getInterDate()">Get  International Date</button>
+        <p id="output"></p>
+
+        <script>
+            function getDate() {
+                var d = new Date();
+                document.getElementById("output").innerHTML =  d.getDate() + "/" + d.getMonth() + "/" + d.getFullYear();
+            }
+            function getInterDate() {
+                var d = new Date();
+                alert(d.getFullYear() + "/" + d.getMonth()  + "/" +d.getDate() );
+            }
+            
+        </script>
+    </div>
+</body>
+</html>
