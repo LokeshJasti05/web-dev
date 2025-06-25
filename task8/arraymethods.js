@@ -87,13 +87,20 @@ function includes(){
     var nameToCheck = document.getElementById("includes").value;
     
     var isIncluded = array.includes(nameToCheck);
-    document.getElementById("output").innerHTML = nameToCheck + " is " + (isIncluded ? "included" : "not included") + " in the array";
+    if(isIncluded){
+        
+    document.getElementById("output").innerHTML = nameToCheck + " is included in the array";
+    }
+    else{
+        
+    document.getElementById("output").innerHTML = nameToCheck + " is not included in the array";
+    }
 }
 
 function find(){
     var nameToFind = document.getElementById("finder").value;
     var foundName = array.find(name => name == nameToFind);
-    
+
     if (foundName != undefined) {
         document.getElementById("output").innerHTML = "Found: " + foundName;
     } else {
