@@ -3,21 +3,43 @@ var array = ["Arnav", "Saanvi", "Dev", "Tanvi", "Raj", "Priya", "Rohan", "Sneha"
 
 function arrayPush() {
     var newName = document.getElementById("push").value;
-    if (newName === "") {
+    if (newName == "") {
         alert("Please enter a name to add to the array.");
         return;
     }
     array.push(newName);
-    document.getElementById("arrayName").innerHTML = array.toString();
+    document.getElementById("arrayName").innerHTML = array;
 
 }
 function arrayPop() {
     array.pop();
-    document.getElementById("arrayName").innerHTML = array.toString();
+    document.getElementById("arrayName").innerHTML = array;
 }
 function getLength() {
     var length = array.length;
     document.getElementById("lengthResult").innerHTML = "Array Length: " + length;
+}
+function sort() {
+    array.sort();
+    document.getElementById("arrayName").innerHTML = array;
+}
+function sort() {
+    var sorted =  array.ToSorted();
+    document.getElementById("tosort").innerHTML = sorted;
+}
+function ToSorted() {
+    var sorted =  array.toSorted();
+    document.getElementById("tosort").innerHTML = sorted;
+}
+function ToReversed() {
+    var sorted =  array.toReversed();
+    document.getElementById("tosort").innerHTML = sorted;
+}
+function reverse() {
+    array.sort;
+    array.reverse();
+    
+    document.getElementById("arrayName").innerHTML = array;
 }
 
 function findIndex(){
@@ -38,12 +60,12 @@ function join(){
 }
 function shift(){
     array.shift();
-    document.getElementById("arrayName").innerHTML = array.toString();
+    document.getElementById("arrayName").innerHTML = array;
 }
 function unshift(){
     var nameToUnshift = document.getElementById("unshift").value;
     array.unshift(nameToUnshift);
-    document.getElementById("arrayName").innerHTML = array.toString();
+    document.getElementById("arrayName").innerHTML = array;
 }
 
 function concat(){
@@ -52,8 +74,8 @@ function concat(){
         alert("Please enter a value to concatenate.");
         return;
     }
-    var newArray = array.concat(concatValue);
-    document.getElementById("arrayName").innerHTML = newArray.toString();
+    array = array.concat(concatValue);
+    document.getElementById("arrayName").innerHTML = array;
 }
 
 
@@ -61,15 +83,14 @@ function concat(){
 
 function slice(){
     var slicedArray = array.slice(2, 5);
-    document.getElementById("slicedArray").innerHTML = slicedArray.toString();
+    document.getElementById("slicedArray").innerHTML = slicedArray;
 }
 function splice() {
     var splicer = document.getElementById("splicer").value;
 
     array.splice(2, 0, splicer);
-    document.getElementById("arrayName").innerHTML = array.toString();
+    document.getElementById("arrayName").innerHTML = array;
 }
-
 
 
 function findLastIndex(){
@@ -98,12 +119,25 @@ function includes(){
 }
 
 function find(){
+    
     var nameToFind = document.getElementById("finder").value;
-    var foundName = array.find(name => name == nameToFind);
+    var isThere = array.find(itThere);
 
-    if (foundName != undefined) {
-        document.getElementById("output").innerHTML = "Found: " + foundName;
-    } else {
-        document.getElementById("output").innerHTML = nameToFind + " not found";
+    function itThere(name){
+        for(var z=0;z<array.length;z++){
+            if(nameToFind===name){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        
+    }
+    if(isThere){
+        document.getElementById("output").innerHTML = nameToFind + " is found in the array";
+    }
+    else{
+        document.getElementById("output").innerHTML = nameToFind + " is not found in the array";
     }
 }

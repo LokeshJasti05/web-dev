@@ -9,7 +9,7 @@
 <body>
 <div class="basic_methods">
     <h3>Array Methods usage</h3>
-    <p id="arrayName" ></p>
+    <p id="arrayName" class="NormalDisplay"></p>
     <input type="text" id="push" placeholder="Enter name to add">
     <button class="btn" onclick="arrayPush()">push me</button>
     <button class="btn" onclick="arrayPop()">pop me</button>
@@ -42,10 +42,26 @@
     <button class="btn" onclick="find()">Find</button>
 
 </div>
-    
+
+<div class="SortMethods">
+    <h3>Sort Methods</h3>
+    <button class="btn" onclick="sort()">Sort</button>
+    <button class="btn" onclick="reverse()">Reverse</button>
+    <button class="btn" onclick="ToSorted()"> To Sorted</button>
+    <button class="btn" onclick="ToReversed()"> To Reversed</button>
+    <p id="tosort"></p>
+</div>
+
 </body>
 </html>
 <style>
+
+    .NormalDisplay{
+        border: 1px solid #adadad;
+        padding: 16px;
+        border-radius: 5px;
+        background: #F8F8FF;
+    }
     body {
         font-family: Arial, sans-serif;
         min-height: 100vh;
@@ -55,15 +71,24 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        background-color: #F8F8FF
+        
     }
 
-    .basic_methods, .searchMethods {
+    .basic_methods .searchMethods .sortMethods {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         width: 100%;
         max-width: 600px;
+    }
+    .basic_methods{
+        
+        background-color: #F5F5F5;
+    }
+    .searchMethods{
+        background-color: #fffafa;
     }
 
     .arrayName{
@@ -78,33 +103,11 @@
         margin: 5px;
         cursor: pointer;
         min-width: 120px;
+        margin-bottom: 10px;
+        box-shadow: 2px 5px 5px rgba(0,0,0,0.1);
     }
 
-    /* Create a container for buttons to display in 2 columns */
-    .button-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        width: 100%;
-        margin: 10px 0;
-    }
-
-    /* For input and button pairs */
-    .input-button-pair {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 10px 0;
-    }
-
-    /* For buttons without inputs */
-    .button-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        width: 100%;
-        margin: 10px 0;
-    }
+    
 </style>
 
 <script>
