@@ -23,8 +23,8 @@ function sort() {
     array.sort();
     document.getElementById("arrayName").innerHTML = array;
 }
-function sort() {
-    var sorted =  array.ToSorted();
+function reverse() {
+    var sorted =  array.reverse();
     document.getElementById("tosort").innerHTML = sorted;
 }
 function ToSorted() {
@@ -42,6 +42,17 @@ function reverse() {
     document.getElementById("arrayName").innerHTML = array;
 }
 
+
+
+
+function map(){
+    debugger
+        var result = array.map(function(value) {
+        return value.toUpperCase();
+    });
+    document.getElementById("forEach").textContent = result.join(", ");
+}
+
 function findIndex(){
     var nameToFind = document.getElementById("index").value;
     var index = array.indexOf(nameToFind);
@@ -51,6 +62,40 @@ function findIndex(){
     else if (index === -1) {
         document.getElementById("findResult").innerHTML = nameToFind + " not found";
     }
+}
+
+function getkeys(){
+    var result = array.keys();
+    var text = "";
+    for (let x of result) {
+        text += x + " ";
+    }
+    document.getElementById("forEach").innerHTML = text;
+}
+function getvalues(){
+    var result = array.values();
+    var text = "";
+    for(var x of result){
+        text+=x + " ";
+    }
+    document.getElementById("forEach").innerHTML = text;
+}
+
+function copyWithin(){
+    var new_array = array.copyWithin(2,0,3);
+    document.getElementById("copyWithin").innerHTML = new_array;
+}
+function reduce(){
+    var result = array.reduceRight(function(total , value){
+        return total += value;
+    })
+    document.getElementById("forEach").innerHTML = result;
+}
+
+function from(){
+    debugger
+    var result = Array.from(array, (x) => x+"1");
+    document.getElementById("forEach").textContent = result;
 }
 
 function join(){
@@ -70,15 +115,10 @@ function unshift(){
 
 function concat(){
     var concatValue = document.getElementById("concat").value;
-    if (concatValue === "") {
-        alert("Please enter a value to concatenate.");
-        return;
-    }
+
     array = array.concat(concatValue);
     document.getElementById("arrayName").innerHTML = array;
 }
-
-
 
 
 function slice(){

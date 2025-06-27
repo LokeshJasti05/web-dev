@@ -14,7 +14,7 @@
     <button class="btn" onclick="arrayPush()">push me</button>
     <button class="btn" onclick="arrayPop()">pop me</button>
     <button class="btn" onclick="getLength()">getLength</button>
-    <p id="lengthResult"></p>
+    <p id="lengthResult" ></p>
     <input type="text" id="index" placeholder="Enter name to find index">
     <button class="btn" onclick="findIndex()">Find Index</button>
     <p id="findResult"></p>
@@ -29,7 +29,19 @@
     <input type="text" id="splicer" placeholder="Enter name to splice">
     <button class="btn" onclick="splice()">Splice</button>
     <p id="splicedArray"></p>
+    <p id="forEach"></p>
+    <button class="btn" onclick="map()"  >map</button>
+    <button class="btn" onclick="reduce()">reduce</button>
+    <button class="btn" onclick="from()">from</button>
+    <button class="btn" onclick="getkeys()">getkeys</button>
+    <button class="btn" onclick="getvalues()">getvalues</button>
+    
+    <p id="copyWithin" class="NormalDisplay">Copy within text</p>
+    <button class="btn" onclick="copyWithin()">copyWithin</button>
+<br/>
+
 </div>
+
 
 <div class="searchMethods">
     <h3>Search Methods</h3>
@@ -63,16 +75,13 @@
         background: #F8F8FF;
     }
     body {
-        font-family: Arial, sans-serif;
-        min-height: 100vh;
-        margin: 0;
         padding: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        background-color: #F8F8FF
-        
+        background-color: #F8F8FF;
+
     }
 
     .basic_methods .searchMethods .sortMethods {
@@ -81,16 +90,17 @@
         align-items: center;
         justify-content: center;
         width: 100%;
-        max-width: 600px;
     }
     .basic_methods{
         
         background-color: #F5F5F5;
     }
     .searchMethods{
-        background-color: #fffafa;
+        background-color: #fafffa;
     }
-
+    .SortMethods{
+        background-color: #f0f0f0;
+    }
     .arrayName{
         font-size: 20px;
         font-weight: bold;
