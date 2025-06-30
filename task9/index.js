@@ -1,5 +1,8 @@
 var string = "Hello, World!";
 
+function display(){
+    document.getElementById("stringName").innerHTML = string;
+}
 function stringLength(){
     document.getElementById("lengthResult").innerHTML = "String Length: " + string.length;
 }
@@ -45,5 +48,55 @@ function ToUpperCase(){
     document.getElementById("upperr_case").innerHTML = string.toUpperCase();
 }   
 function ToLowerCase(){
-    document.getElementById("lower_case").innerHTML = string.toUpperCase();
+    document.getElementById("Lower_case").innerHTML = string.toLowerCase();
 }   
+
+function substring(){
+    let start = document.getElementById("startIndex").value;
+    let end = document.getElementById("endIndex").value;
+    document.getElementById("substringResult").innerHTML = string.substring(start,end);
+}
+function slice(){
+    let start = document.getElementById("startIndex1").value;
+    let end = document.getElementById("endIndex1").value;
+    document.getElementById("sliceResult").innerHTML = string.slice(start,end);
+}
+
+function padStart(){
+    var length = document.getElementById("lenght").value;
+
+    document.getElementById("padStartResult").innerHTML = string.padStart(length, '0');
+}
+
+function padEnd(){
+    var length = document.getElementById("lenght1").value;
+
+    document.getElementById("padEndResult").innerHTML = string.padEnd(length, '0');
+}
+
+function concat(){
+    var str = document.getElementById("concatString").value;
+    var result = string.concat(" ", str);
+    document.getElementById("concatResult").innerHTML = result;
+}
+function repeater(){
+    var count = document.getElementById("repeatCount").value;
+    var result = string.repeat(count);
+    document.getElementById("repeatResult").innerHTML = result;
+}
+
+function change(){
+    var newString = document.getElementById("replace_text").value;
+    document.getElementById("replacedText").innerHTML = string.replace("World!",  newString);;
+}
+
+function indexOf1(){
+    var searchString = document.getElementById("searchText").value;
+    var index = string.indexOf(searchString);
+   if(index != -1){
+        document.getElementById("indexOfResult").innerHTML = index;
+   }
+   else{
+    document.getElementById("indexOfResult").innerHTML = "String not found";
+   }
+}

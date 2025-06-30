@@ -15,27 +15,34 @@
       background-color: #F8F8FF;
     }
 
-    .searchMethods ,.change_cases     {
+    .searchMethods ,.change_cases , .substrings   {
       display: flex;
       flex-direction: row;
       gap: 40px; 
       margin-top: 20px;
     }
 
-    .method-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    
+
+    input{
+        padding: 10px;
+        margin: 5px;
+        width: 100px;
+        height: 10px;
+        border: 1px solid #adadad;
+        border-radius: 5px;
     }
 
     .btn {
       margin-top: 10px;
+      
     }
   </style>
 </head>
 <body>
   <div class="string_methods">
     <h3>String Methods </h3>
+    <button onclick="display()">Display String</button>
     <p id="stringName" class="NormalDisplay"></p>
 
     <button class="btn" onclick="stringLength()">Get Length</button>
@@ -55,14 +62,16 @@
         <button class="btn" onclick="charCodeAtIndex()">Char at for ASCII value</button>
         <p id="charCodeAtResult"></p>
       </div>
+
       <div class="method-block">
         <input type="number" id="at" placeholder="Enter index" />
         <button class="btn" onclick="at()">char AT</button>
         <p id="at1"></p>
       </div>
+
     </div>
 
-    <div classname = 'change_cases'>
+    <div class="change_cases">
         <h3>Cases</h3>
         <div class="method-block">
             <button class="btn" onclick="ToUpperCase()">Change to Upper Case</button>
@@ -74,13 +83,62 @@
         </div>
     </div>
 
+    <div class="substrings">
+        <h3>substrings</h3>
+        <div class="method_block">
+            <input type="number" id="startIndex" placeholder="Start index" />
+            <input type="number" id="endIndex" placeholder="End index" />
+            <button class="btn" onclick="substring()">Get Substring</button>
+            <p id="substringResult"></p>
+        
+
+            <input type="number" id="startIndex1" placeholder="Start index" />
+            <input type="number" id="endIndex1" placeholder="End index" />
+            <button class="btn" onclick="slice()">Get Slice</button>
+            <p id="sliceResult"></p>
+
+        </div> 
+    </div>
+
+    <div class="pad">
+        <h3>Pad Methods</h3>
+        <input type="number" id="lenght" placeholder="Enter length">
+        <button class="btn" onclick="padStart()">Pad Start</button>
+        <p id="padStartResult"></p>
+        <input type="number" id="lenght1" placeholder="Enter length">   
+        <button class="btn" onclick="padEnd()">Pad End</button>
+        <p id="padEndResult"></p>
+    </div>
+
+
+    <div class="concat">
+        <h3>ConCat</h3>
+        <input type="text" id="concatString" placeholder="Enter string to concat">
+        <button class="btn" onclick="concat()">Concat</button>
+        <p id="concatResult"></p>
+    </div>
+
+    <div class="repeat">
+        <h3>Repeat</h3>
+        <input type="number" id="repeatCount" placeholder="Enter repeat count">
+        <button onclick="repeater()" >Repeat</button>
+        <p id="repeatResult"></p>
+    </div>
+
+    <div class="replace">
+        <h3>replace</h3>
+        <input type="text" id="replace_text" placeholder="Enter Name">
+        <button onclick="change()" >replace</button>
+        <p id="replacedText"></p>
+    </div>
+
+    <div class="indexOf">
+        <h3>IndexOf</h3>
+        <input type="text"  id="searchText" placeholder="Enter text to search">
+        <button class="btn" onclick="indexOf1()">Index Of</button>
+        <p id="indexOfResult"></p>
+
+    </div>
   </div>
-
-
-  <script>
-
-    document.getElementById("stringName").textContent = string;
-
-  </script>
 </body>
 </html>
