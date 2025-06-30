@@ -83,6 +83,7 @@ function saveNewRow(button) {
     `;
 }
 
+
 function cancelNewRow(button) {
     const row = button.closest('tr');
     row.remove();
