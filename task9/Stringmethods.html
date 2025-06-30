@@ -1,28 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>String Methods</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>String Methods</title>
+  <script src="index.js" defer></script>
+  <style>
+    body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #F8F8FF;
+    }
+
+    .searchMethods ,.change_cases     {
+      display: flex;
+      flex-direction: row;
+      gap: 40px; 
+      margin-top: 20px;
+    }
+
+    .method-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-    <div class="string_methods">
-        <h3>String Methods Usage</h3>
-        <p id="stringName" class="NormalDisplay"></p>
+  <div class="string_methods">
+    <h3>String Methods </h3>
+    <p id="stringName" class="NormalDisplay"></p>
 
-        <input type="text" id="stringInput" placeholder="Enter a string">
-        <button class="btn" onclick="getLength()">Get Length</button>
-        <p id="lengthResult"></p>
-        <button class="btn" onclick="toUpperCase()">To Upper Case</button>
-        <p id="upperCaseResult"></p>    
-        <button class="btn" onclick="toLowerCase()">To Lower Case</button>
-        <p id="lowerCaseResult"></p>
-        <button class="btn" onclick="charAt()">Char At</button>
-        <input type="number" id="charIndex" placeholder="Enter index">
+    <button class="btn" onclick="stringLength()">Get Length</button>
+    <p id="lengthResult"></p>
+
+    <div class="searchMethods">
+
+        <h3 >Search Methdos</h3>
+      <div class="method-block">
+        <input type="number" id="charAtIndex" placeholder="Enter index for char" />
+        <button class="btn" onclick="charAtIndex()">Char at index</button>
         <p id="charAtResult"></p>
-        <button class="btn" onclick="indexOf()">Index Of</button>
-        <input type="text" id="searchString" placeholder="Enter string to search">
-        <p id="indexOfResult"></p>
+      </div>
+
+      <div class="method-block">
+        <input type="number" id="charCodeAtIndex" placeholder="Enter index for char" />
+        <button class="btn" onclick="charCodeAtIndex()">Char at for ASCII value</button>
+        <p id="charCodeAtResult"></p>
+      </div>
+      <div class="method-block">
+        <input type="number" id="at" placeholder="Enter index" />
+        <button class="btn" onclick="at()">char AT</button>
+        <p id="at1"></p>
+      </div>
+    </div>
+
+    <div classname = 'change_cases'>
+        <h3>Cases</h3>
+        <div class="method-block">
+            <button class="btn" onclick="ToUpperCase()">Change to Upper Case</button>
+            <p id="upperr_case"></p>
         </div>
+        <div class="method-block">
+            <button class="btn" onclick="ToLowerCase()">Change to Lower Case</button>
+            <p id="Lower_case"></p>
+        </div>
+    </div>
+
+  </div>
+
+
+  <script>
+
+    document.getElementById("stringName").textContent = string;
+
+  </script>
 </body>
 </html>
