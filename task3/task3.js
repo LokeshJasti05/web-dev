@@ -29,6 +29,7 @@ function submitForm(){
                          `;
      table.appendChild(new_row);
      clearRows();
+     SerialNumber()
     document.getElementById('newSubmissionBtn').style.display = 'block';
 }
 
@@ -68,12 +69,15 @@ function copyRow(button){
                             <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
                         </td>
     `
-
+    SerialNumber();
     table.appendChild(new_row);
 }
 
 function editRow(button) {
     var row = button.closest('tr');
+
+    button.innerText = "Save";
+    button.setAttribute("onclick", "saveRow(this)");
 
     var initialValues = {
         name: row.cells[1].innerText,
@@ -87,16 +91,12 @@ function editRow(button) {
     row.cells[3].innerHTML = `<input type="tel" class="edit-input" value="${row.cells[3].innerText}">`;
     row.cells[4].innerHTML = `<input type="email" class="edit-input" value="${row.cells[4].innerText}">`;
     row.cells[5].innerHTML = `<select id="employeeGender">
-                                <option value="" disabled selected>${row.cells[5].innerText}</option>
+                                <option value="${row.cells[5].innerText}" disabled selected>${row.cells[5].innerText}</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
                                 <option value="other">Other</option>
                             </select>`;
 
-    row.cells[6].innerHTML=`
-        <button class="edit-btn" onclick="saveRow(this)">Save</button>
-        <button class="delete-btn" >Cancel</button>
-    `;
     
     const cancelBtn = document.querySelector(".delete-btn");
     cancelBtn.addEventListener('click', function() {
@@ -112,14 +112,18 @@ function editRow(button) {
                 <button class="delete-btn" onclick="deleteRow(this)">Delete</button>
             `;
     })
+    SerialNumber();
 
 }
+
+
 
 
 function showNewSubmissionForm() {
     const table = document.getElementById('tableBody');
     const newRow = document.createElement('tr');
-
+    
+    
 
     newRow.innerHTML = `
         <td>${table.rows.length+1}</td>
@@ -146,6 +150,8 @@ function showNewSubmissionForm() {
     });
 
     tableBody.appendChild(newRow);
+
+    SerialNumber();
 }
 
 function saveRow(button){
@@ -157,6 +163,9 @@ function saveRow(button){
     var number = row.cells[3].querySelector('input').value;
     var email = row.cells[4].querySelector('input').value;
     var gender = row.cells[5].querySelector('select').value;
+
+
+    
 
     console.log(gender);
     row.innerHTML = `
