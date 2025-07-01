@@ -105,7 +105,7 @@ function includess(){
     var searchString = document.getElementById("includesText").value;
     var result = string.includes(searchString);
     if(result){
-        document.getElementById("output").innerHTML = "String contains" + searchString;
+        document.getElementById("output").innerHTML = "String contains " + searchString;
     }
     else{
         document.getElementById("output").innerHTML = "String does not contai " + searchString;

@@ -11,19 +11,22 @@
     <h1 class="title">Employee Details</h1>
     
     <div class="dataentry">
-        <input type="text" id="employeeName" placeholder="Name">
-        <input type="number" id="employeeAge" placeholder="Age">
-        <select id="employeeGender">
+        <input type="text" id="employeeName" placeholder="Name" required>
+        <input type="number" id="employeeAge" placeholder="Age" required>
+        <select id="employeeGender" required>
             <option value="" disabled selected>Select Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>
         </select>
-        <input type="tel" id="employeeNumber" placeholder="Phone Number">
-        <input type="email" id="employeeEmail" placeholder="Email">
+        <input type="tel" id="employeeNumber" placeholder="Phone Number" required>
+        <input type="email" id="employeeEmail" placeholder="Email" required>
         <button class="submit" onclick="submitForm()">Submit</button>
         <button class="submit" id="newSubmissionBtn" style="display: none;" onclick="showNewSubmissionForm()">New Submission</button>
     </div>
+
+
+    
 
     <table>
         <thead>

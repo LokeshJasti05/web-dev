@@ -158,7 +158,7 @@ function deleteRow(button) {
     const row = button.closest('tr');
     row.remove();
     deleteSerialNumber();
-    
+
 }
 
 function clearInputFields() {
@@ -167,3 +167,4 @@ function clearInputFields() {
     document.getElementById('employeeNumber').value = '';
     document.getElementById('employeeEmail').value = '';
 }
+
