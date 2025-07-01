@@ -100,7 +100,7 @@ function editRow(button) {
     
     const cancelBtn = document.querySelector(".delete-btn");
     cancelBtn.addEventListener('click', function() {
-        
+
             row.cells[1].innerHTML = `<p>${initialValues.name}</p>`;
             row.cells[2].innerHTML = `<p>${initialValues.age}</p>`;
             row.cells[3].innerHTML = `<p>${initialValues.number}</p>`;
@@ -147,6 +147,7 @@ function showNewSubmissionForm() {
     const cancelBtn = newRow.querySelector(".delete-btn");
     cancelBtn.addEventListener('click', function () {
         newRow.remove();
+        SerialNumber();
     });
 
     tableBody.appendChild(newRow);
@@ -165,6 +166,10 @@ function saveRow(button){
     var gender = row.cells[5].querySelector('select').value;
 
 
+    if(name == "" || age == "" || number == "" || email == "" ||gender == ""){
+        alert("Please fill in all fields");
+        return;
+    }
     
 
     console.log(gender);
