@@ -8,8 +8,20 @@ function submitForm(){
     var email = document.getElementById('employeeEmail').value;
     var gender = document.getElementById("employeeGender").value;
     
+    var emailRegex = /@.*\./;
+    const phone_pattern = /^\d{10}$/;
+
+
     if(name === "" || age === "" || number === "" || email === ""){
         alert("enter all fields");
+        return;
+    }
+    if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+    if (!phone_pattern.test(number)) {
+        alert("Please enter a valid 10-digit phone number.");
         return;
     }
 
@@ -29,7 +41,8 @@ function submitForm(){
                          `;
      table.appendChild(new_row);
      clearRows();
-     SerialNumber()
+     SerialNumber();
+     
     document.getElementById('newSubmissionBtn').style.display = 'block';
 }
 
