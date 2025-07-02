@@ -2,29 +2,83 @@
 function submitForm(){
     var table = document.getElementById("tableBody");
 
+    var nameInput = document.getElementById("employeeName");
+    var ageInput = document.getElementById("employeeAge");
+    var numberInput = document.getElementById("employeeNumber");
+    var emailInput = document.getElementById("employeeEmail");
+    var genderInput = document.getElementById("employeeGender");
+
+
     var name = document.getElementById("employeeName").value;
     var age = document.getElementById('employeeAge').value;
     var number = document.getElementById('employeeNumber').value;
     var email = document.getElementById('employeeEmail').value;
     var gender = document.getElementById("employeeGender").value;
     
-    var emailRegex = /@.*\./;
+    const emailRegex = /@.*\./;
     const phone_pattern = /^\d{10}$/;
 
+    var flag=false;
 
-    if(name === "" || age === "" || number === "" || email === ""){
-        alert("enter all fields");
-        return;
+    
+
+    if(name === ""){
+        nameInput.style.border = "2px solid red";
+        
+        flag=true
+        
     }
-    if (!emailRegex.test(email)) {
-        alert("Please enter a valid email address.");
-        return;
+    else{
+        nameInput.style.border = "none";
     }
+    
+    if(age === ""){
+        ageInput.style.border = "2px solid red";
+        
+        flag=true
+    }
+    else{
+        ageInput.style.border = "none";
+    }
+    
+    if(number === ""){
+        numberInput.style.border = "2px solid red";
+        
+        flag=true
+    }
+    else{
+        numberInput.style.border = "none";
+    }
+    
+    if(!emailRegex.test(email) || email === ""){
+        emailInput.style.border = "2px solid red";
+        
+        flag=true
+    }
+    else{
+        emailInput.style.border = "none";
+    }
+    
+    if(gender === ""){
+        genderInput.style.border = "2px solid red";
+        
+        flag=true
+    }
+    else{
+        genderInput.style.border = "none";
+    }
+    
     if (!phone_pattern.test(number)) {
-        alert("Please enter a valid 10-digit phone number.");
-        return;
+        numberInput.style.border = "2px solid red"
+        flag=true
+        
     }
 
+    if(flag == true){
+        alert("fill all fields correctly");
+        return;
+    }
+    
     var new_row = document.createElement("tr");
     new_row.innerHTML = `
                         <td><p>${table.rows.length + 1}</p></td>
