@@ -15,8 +15,8 @@ function submitForm(){
     var email = document.getElementById('employeeEmail').value;
     var gender = document.getElementById("employeeGender").value;
     
-    const emailRegex = /@.*\./;
-    const phone_pattern = /^\d{10}$/;
+    const emailRegex = /@[^@]+\.[^@]+/;
+    const phone_pattern = /^[6-9][0-9]{9}$/;
 
     var flag=false;
 
@@ -107,6 +107,8 @@ function SerialNumber(){
      }  
 }
 
+
+
 function deleteRow(button) {
     const row = button.closest('tr');
     row.remove(); 
@@ -140,6 +142,8 @@ function copyRow(button){
     table.appendChild(new_row);
 }
 
+
+
 function editRow(button) {
     var row = button.closest('tr');
 
@@ -154,7 +158,7 @@ function editRow(button) {
         gender: row.cells[5].innerText,
     };
     row.cells[1].innerHTML = `<input type="text" class="edit-input" value="${row.cells[1].innerText}">`;
-    row.cells[2].innerHTML = `<input type="number" class="edit-input" value="${row.cells[2].innerText}">`;
+    row.cells[2].innerHTML = `<input type="text" class="edit-input" value="${row.cells[2].innerText}">`;
     row.cells[3].innerHTML = `<input type="tel" class="edit-input" value="${row.cells[3].innerText}">`;
     row.cells[4].innerHTML = `<input type="email" class="edit-input" value="${row.cells[4].innerText}">`;
     row.cells[5].innerHTML = `<select id="employeeGender">
@@ -195,7 +199,7 @@ function showNewSubmissionForm() {
     newRow.innerHTML = `
         <td>${table.rows.length+1}</td>
         <td><input type="text" class="edit-input"></td>
-        <td><input type="number" class="edit-input"></td>
+        <td><input type="text" class="edit-input"></td>
         <td><input type="tel" class="edit-input"></td>
         <td><input type="email" class="edit-input"></td>
         <td><select id="employeeGender" required>
@@ -232,11 +236,28 @@ function saveRow(button){
     var email = row.cells[4].querySelector('input').value;
     var gender = row.cells[5].querySelector('select').value;
 
+    
+    const emailRegex = /@[^@]+\.[^@]+/;
+    const phone_pattern = /^[6-9][0-9]{9}$/;
+    
+    var flag = false;
 
     if(name == "" || age == "" || number == "" || email == "" ||gender == ""){
-        alert("Please fill in all fields");
-        return;
+    
+        flag = true;
     }
+
+    if(emailRegex.test(email) == false){
+        flag = true;
+    }
+
+    if(phone_pattern.test(number) == false){
+        flag = true;
+    }
+    if(flag == true){
+        alert("Please fill in all fields correctly");
+        return;
+    }7
     
 
     console.log(gender);
