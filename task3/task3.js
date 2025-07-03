@@ -110,9 +110,18 @@ function SerialNumber(){
 
 
 function deleteRow(button) {
-    const row = button.closest('tr');
-    row.remove(); 
-    SerialNumber();
+    var row = button.closest('tr');
+    
+    var confirmation = confirm("Are you sure you want to delete this row?");
+    if(confirmation){
+        alert("Row deleted successfully!");
+        row.remove(); 
+        SerialNumber();
+    } else {
+        alert("Deletion cancelled.");
+    }
+    
+    
 }
 
 function copyRow(button){
