@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Two Arrays</title>
+    <style>
+        body {
+            background: #f7f7f7;
+        }
+        .container {
+            background-color: #eafbe7;
+            padding: 32px 24px 24px 24px;
+            border-radius: 12px;
+            margin: 40px auto 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            max-width: 400px;
+        }
+        .input-arrays {
+            background-color: #f6f1f1;
+            border-radius: 8px;
+            padding: 20px 16px 16px 16px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+        }
+        .input-arrays > div {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .input-arrays label {
+            font-size: 15px;
+            margin-bottom: 6px;
+            color: #2d4a2d;
+        }
+        .input-arrays input {
+            width: 100%;
+            max-width: 260px;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 1px solid #b6b6b6;
+            margin-bottom: 12px;
+            text-align: center;
+            font-size: 15px;
+            background: #fff;
+            transition: border 0.2s;
+        }
+        .input-arrays input:focus {
+            outline: none;
+            border: 1.5px solid #7ecb8f;
+            background: #f3fff7;
+        }
+        .input-arrays button {
+            width: 100%;
+            max-width: 260px;
+            padding: 9px 0;
+            border-radius: 6px;
+            border: none;
+            background: #7ecb8f;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: background 0.2s;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+        }
+        .input-arrays button:hover {
+            background-color: #5fae6e;
+        }
+        .input-arrays button:focus {
+            outline: none;
+            background: #4e9c5c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Input Two Arrays</h2>
+        <div class="input-arrays">
+            <div>
+                <label for="array1">Array 1 (comma separated):</label>
+                <input type="text" id="array1" placeholder="e.g. 1,2,3,4">
+            </div>
+            <div>
+                <label for="array2">Array 2 (comma separated):</label>
+                <input type="text" id="array2" placeholder="e.g. 3,4,5,6">
+            </div>
+            <button id="submitArrays" onclick="find()">Submit</button>
+        </div>
+        <div id="intersection" style="margin-top:18px; color:#2d4a2d; font-weight:500;"></div>
+        <div id="union" style="margin-top:8px; color:#2d4a2d; font-weight:500;"></div>
+    </div>
+</body>
+</html>
+
+<script>
+    function find(){
+        var array1 = document.getElementById("array1").value.split(',').map(Number);
+        var array2 = document.getElementById("array2").value.split(',').map(Number);
+        var intersection = [];
+        var union = [];
+            
+        for(var i =0;i<array1.length;i++){
+
+            debugger
+            if(contains(intersection,array1[i])){
+                continue;
+            }
+            if(contains(array2,array1[i])){
+                intersection.push(array1[i]);
+            }
+
+            if(!contains(union,array1[i])){
+                union.push(array1[i]);
+            }
+        }
+
+        for(var j =0;j<array2.length;j++){
+            debugger
+            if(!contains(union,array2[j])){
+                union.push(array2[j])
+            }
+        }
+
+    document.getElementById("intersection").innerText = "Intersection: " + intersection.join(', ');
+    document.getElementById("union").innerText = "Union: " + union.join(', ');
+
+    }
+    
+        
+
+function contains(array,element){
+    for(var i=0;i<array.length;i++){
+        if(array[i]===element){
+            return true;
+        }
+    }
+}
+    
+    
+</script>
