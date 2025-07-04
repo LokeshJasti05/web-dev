@@ -9,9 +9,11 @@
     <div class="container">
         <div class="input-jagged-array">
             <h1>Input Jagged Array</h1>
-            <input type="text" id="input-jagged-array" placeholder="Enter the jagged array">
-            <button id="btn-jagged-array" onclick="sumJaggedArray()">Submit</button>
+            <input type="text" id="input-jagged-array" placeholder="Enter the jagged array size">
+            <button id="btn-jagged-array" onclick="JaggedArray()">Submit</button>
+            <div id="jagged-array-rows"></div>
         </div>
+        <button id="btn-sum-jagged-array" style="display:none" onclick="sumJaggedArray()">Sum Jagged Array</button>
         <p>Output sum of Jagged Array</p>
         <p id="sum-jagged-array"></p>
         
@@ -42,9 +44,50 @@
 </style>
 
 <script>
-    var array = document.getElementById("input-jagged-array").value;
+    
+    var jaggedArray = [];
+
+    function JaggedArray() {
+        var input = document.getElementById("input-jagged-array").value;
+        var rowsContainer = document.getElementById("jagged-array-rows");
+        var button = document.getElementById("btn-jagged-array");
+        button.disabled = true;
+        for(var i = 0; i < input; i++){
+            var row = document.createElement("div");
+            row.className = "jagged-array-row";
+            row.innerHTML = `<input type="text" id="row-${i}" placeholder="Enter elements for row ${i + 1} (space separated)">`;
+            rowsContainer.appendChild(row);
+        }
+
+        var storeButton = document.createElement("button");
+        storeButton.textContent = "Store Jagged Array";
+        storeButton.onclick = function() {
+            jaggedArray = []; 
+            for (var i = 0; i < input; i++) {
+                var rowInput = document.getElementById(`row-${i}`).value.trim();
+                if (rowInput.length > 0) {
+                    var rowArr = rowInput.split(/\s+/).map(Number);
+                    jaggedArray.push(rowArr);
+                } else {
+                    jaggedArray.push([]);
+                }
+            }
+            storeButton.disabled = true;
+            button.disabled = false;
+        };
+        rowsContainer.appendChild(storeButton);
+
+        document.getElementById("btn-sum-jagged-array").style.display = "block";
+    }
+
     function sumJaggedArray(){
-        
+        var sum =0;
+        for(var i =0;i<jaggedArray.length;i++){
+            for(var j =0 ;j<jaggedArray[i].length;j++){
+                sum += jaggedArray[i][j];
+            }
+        }
+        document.getElementById("sum-jagged-array").innerHTML = sum;
     }
 </script>
-
+ 

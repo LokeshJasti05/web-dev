@@ -11,8 +11,8 @@
 
 <script>
 function readMatrix() {
-    let input = document.getElementById("inputMatrix").value;
-    var matrix = input.split(',').map(row => row.trim().split(' ').map(Number));
+    let input = document.getElementById("inputMatrix").value.input.split(',');
+    
     console.log(matrix);
 }
 </script>
