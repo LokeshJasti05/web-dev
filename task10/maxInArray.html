@@ -6,16 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" id="inputMatrix" placeholder="e.g. 1 2 3, 4 5 6">
-<button onclick="readMatrix()">Submit</button>
-
-<script>
-function readMatrix() {
-    let input = document.getElementById("inputMatrix").value.input.split(',');
-    
-    console.log(matrix);
-}
-</script>
-
+    <div class="container">
+        <div class="input-jagged-array">
+            <h1>Input Jagged Array</h1>
+            <input type="text" id="input-jagged-array" placeholder="Enter the jagged array size">
+            <button id="btn-jagged-array" onclick="JaggedArray()">Submit</button>
+            <div id="jagged-array-rows"></div>
+        </div>
+        <button id="btn-sum-jagged-array" style="display:none" onclick="sumJaggedArray()">Sum Jagged Array</button>
+        <p>Output sum of Jagged Array</p>
+        <p id="sum-jagged-array"></p>
+        
+    </div>
 </body>
 </html>
