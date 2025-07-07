@@ -1,129 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <div class="input-jagged-array">
-            <h1>Input Jagged Array</h1>
-            <input type="text" id="input-jagged-array" placeholder="Enter the jagged array size">
-            <button id="btn-jagged-array" onclick="JaggedArray()">Submit</button>
-            <div id="jagged-array-rows"></div>
-        </div>
-        <button id="btn-sum-jagged-array" style="display:none" onclick="sumJaggedArray()">max Jagged Array</button>
-        <p>Output max of Jagged Array</p>
-        <p id="max-jagged-array"></p>
-        
-    </div>
-</body>
-</html>
-
-<script>
-    var juggedArray = [];
-    function JaggedArray(){
-        var input = document.getElementById("input-jagged-array").value;
-        var rows_container= document.getElementById("jagged-array-rows");
-        var button = document.getElementById("btn-jagged-array");
-        button.disabled = true;
-
-        for(var i = 0;i< input;i++){
-            var rows = document.createElement("div");
-            rows.className = "jagged_array_row";
-            rows.innerHTML =`<input type="text" id="row-${i}" placeholder="Enter elements for row ${i + 1} (space separated)">`       
-            rows_container.appendChild(rows);
-        }
-        var storeButton = document.createElement("button");
-        storeButton.textContent = "Store Jagged Array";
-        storeButton.onclick = function() {
-            juggedArray = [];
-            debugger
-            for(var i=0;i<input;i++){
-                var rowInput = document.getElementById(`row-${i}`).value.trim();
-                console.log(rowInput);
-            }
-        }
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jagged Array Input</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-</script>
+    body {
+      background: linear-gradient(135deg, #c6cce4 0%, #e8e9fd 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-<style>
-        body {
-            background: #f7f7f7;
+    .input {
+      background: white;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 500px;
+    }
+
+    .size {
+      margin-bottom: 1.5rem;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e1e5e9;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      background: linear-gradient(135deg, #66eab1 0%, #17572d 100%);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+
+    .inputs {
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 600px) {
+      .input {
+        margin: 1rem;
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="input">
+    <div class="size">
+      <input type="text" id="size" placeholder="Enter the size of the array" />
+      <button onclick="createArray()">Create Array</button>
+    </div>
+    <div class="inputs" id="inputs">
+      <!-- Dynamic rows go here -->
+    </div>
+    <button id="findBtn" onclick="findMaxMin()" style="display: none;">Find Max and Min</button>
+    <p id="output"></p>
+  </div>
+
+  <script>
+    let jaggedArray = [];
+
+    function createArray() {
+      const size = Number(document.getElementById("size").value);
+      const rowsContainer = document.getElementById("inputs");
+      rowsContainer.innerHTML = ''; 
+
+      for (let i = 0; i < size; i++) {
+        const new_row = document.createElement("div");
+        new_row.innerHTML = `<input type="text" id="row-${i}" placeholder="Enter elements for row ${i + 1} (space separated)">`;
+        rowsContainer.appendChild(new_row);
+      }
+
+      const storeButton = document.createElement("button");
+      storeButton.textContent = "Store Jagged Array";
+      storeButton.onclick = function () {   
+        jaggedArray = [];
+        for (let i = 0; i < size; i++) {
+          const rowInput = document.getElementById(`row-${i}`).value.trim();
+          if (rowInput.length > 0) {
+            const rowArr = rowInput.split(/\s+/).map(Number);
+            jaggedArray.push(rowArr);
+          } else {
+            jaggedArray.push([]);
+          }
         }
-        .container {
-            background-color: #eafbe7;
-            padding: 32px 24px 24px 24px;
-            border-radius: 12px;
-            margin: 40px auto 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-            max-width: 400px;
+        storeButton.disabled = true;
+        document.getElementById("findBtn").style.display = "block";
+      };
+      rowsContainer.appendChild(storeButton);
+    }
+
+    function findMaxMin(){
+        var min = Infinity;
+        var max = -Infinity;
+        for(var i = 0; i < jaggedArray.length; i++) {
+            for(var j = 0; j < jaggedArray[i].length; j++) {
+                if(jaggedArray[i][j] < min) {
+                    min = jaggedArray[i][j];
+                }
+                if(jaggedArray[i][j] > max) {
+                    max = jaggedArray[i][j];
+                }
+            }
         }
-        .input-arrays {
-            background-color: #f6f1f1;
-            border-radius: 8px;
-            padding: 20px 16px 16px 16px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-        }
-        .input-arrays > div {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-        .input-arrays label {
-            font-size: 15px;
-            margin-bottom: 6px;
-            color: #2d4a2d;
-        }
-        .input-arrays input {
-            width: 100%;
-            max-width: 260px;
-            padding: 10px 12px;
-            border-radius: 6px;
-            border: 1px solid #b6b6b6;
-            margin-bottom: 12px;
-            text-align: center;
-            font-size: 15px;
-            background: #fff;
-            transition: border 0.2s;
-        }
-        .input-arrays input:focus {
-            outline: none;
-            border: 1.5px solid #7ecb8f;
-            background: #f3fff7;
-        }
-        .input-arrays button {
-            width: 100%;
-            max-width: 260px;
-            padding: 9px 0;
-            border-radius: 6px;
-            border: none;
-            background: #7ecb8f;
-            color: #fff;
-            font-size: 15px;
-            font-weight: 500;
-            cursor: pointer;
-            margin-bottom: 10px;
-            transition: background 0.2s;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-        }
-        .input-arrays button:hover {
-            background-color: #5fae6e;
-        }
-        .input-arrays button:focus {
-            outline: none;
-            background: #4e9c5c;
-        }
-</style>
+    }
+  </script>
+</body>
+</html>
