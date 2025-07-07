@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>remove duplicates</title>
+</head>
+<body>
+    <input type="text" id = "array" placeholder="Enter array elements (comma separated)">
+    <button onclick="arrayDupes()">Remove Duplicates</button>
+    <p id="output"></p>
+</body>
+</html>
+
+<script>
+function arrayDupes() {
+    var arr = document.getElementById("array").value.split(",").map(Number);
+
+    var finalArray = [];
+
+    arr.forEach(function(item) {
+        if (finalArray.includes(item) === false) {
+            finalArray.push(item);
+        }
+    });
+
+    document.getElementById("output").innerText = "Unique Array: " + finalArray.join(", ");
+}
+</script>
