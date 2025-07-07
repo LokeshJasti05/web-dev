@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="array1" placeholder="Enter first array (comma separated)">
+    <input type="text" id="array2" placeholder="Enter second array (comma separated)">
+    <button onclick="mergeArrays()">Merge Arrays</button>
+    <p id="result"></p>
+</body>
+
+<script>
+    function mergeArrays() {
+        var array1 = document.getElementById("array1").value.split(",").map(Number);
+        var array2 = document.getElementById("array2").value.split(",").map(Number);
+        
+        var mergedArray = [...array1, ...array2];
+        var finalArray=[];
+
+        for(var i=0;i<mergedArray.length;i++){
+            if(check(mergedArray[i],finalArray)===false){
+                finalArray.push(mergedArray[i]);
+            }
+            else if(check(mergedArray[i],finalArray)===true){
+                continue;
+            }
+        }
+
+        document.getElementById("result").innerText = "Merged Array: " + finalArray.join(", ");
+    }
+
+
+function check(int, array){
+    for(var i=0;i<array.length;i++){
+        if(array[i]=== int){
+            return true;
+        }
+    }
+    return false
+}
+
+</script>
+</html>
