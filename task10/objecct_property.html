@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <input id="property" placeholder="object name"/>
+
+        <input id="value" placeholder="object value"/>
+
+        <button id="add" onclick="addProperty()">Add Property</button>
+
+        <p id="output"></p>
+    </div>
+    
+    <style>
+
+    </style>
+</body>
+</html>
+
+<script>
+
+    var object = {};
+
+function addProperty() {
+    var property = document.getElementById("property").value;
+    var value = document.getElementById("value").value;
+    var number = Number(value);
+
+     if (property in object) {
+        object[property] += number;
+      } else {
+        object[property] = number;
+      }
+
+    document.getElementById("output").innerHTML = JSON.stringify(object, null,10034);
+}
+</script>
