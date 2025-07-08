@@ -3,13 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>object methods</title>
+    <title>Object Methods</title>
+    <script src="object_methods.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .object_methods {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .method-section {
+            margin: 20px 0;
+        }
+
+        .method-block {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            background-color: white;
+            display: inline-block;
+            vertical-align: top;
+            width: 250px;
+        }
+
+        input {
+            padding: 5px;
+            margin: 5px;
+            width: 120px;
+            border: 1px solid #999;
+        }
+
+        
+        h3 {
+            margin: 5px 0;
+            color: #333;
+        }
+
+        p {
+            margin: 5px 0;
+            padding: 5px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-    <p id="initial object"></p>
-    <div id="object"></div>
+    <div class="object_methods">
+        <h3>Object Methods</h3>
+        <button onclick="displayObject()">Display Object</button>
+        <p id="objectDisplay" class="NormalDisplay"></p>
 
-</div>
+        <div class="method-section">
+            <div class="method-block">
+                <h3>Object.keys()</h3>
+                <button class="btn" onclick="getKeys()">Get Keys</button>
+                <p id="keysResult"></p>
+            </div>
+
+            <div class="method-block">
+                <h3>Object.values()</h3>
+                <button class="btn" onclick="getValues()">Get Values</button>
+                <p id="valuesResult"></p>
+            </div>
+
+            <div class="method-block">
+                <h3>Object.entries()</h3>
+                <button class="btn" onclick="getEntries()">Get Entries</button>
+                <p id="entriesResult"></p>
+            </div>
+        </div>
+
+        <div class="method-section">
+            <div class="method-block">
+                <h3>Object.assign()</h3>
+                <input type="text" id="newProperty" placeholder="New property name" />
+                <input type="text" id="newValue" placeholder="New property value" />
+                <button class="btn" onclick="assignProperty()">Assign Property</button>
+                <p id="assignResult"></p>
+            </div>
+
+            <div class="method-block">
+                <h3>JSON.stringify()</h3>
+                <button class="btn" onclick="stringifyObject()">Stringify Object</button>
+                <p id="stringifyResult"></p>
+            </div>
+        </div>
+
+        
+    </div>
 </body>
 </html>
