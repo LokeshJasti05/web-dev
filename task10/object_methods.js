@@ -6,45 +6,45 @@ var object = {
     hobbies: ["coding", "reading", "gaming"]
 };
 
-function displayObject() {
+function displayObject(){
     document.getElementById("objectDisplay").innerHTML = JSON.stringify(object, null, 2);
 }
 
-function getKeys() {
-    const keys = Object.keys(object);
-    document.getElementById("keysResult").innerHTML = "Keys: " + keys.join(", ");
+function getKeys(){
+    var keys = Object.keys(object);
+    document.getElementById("keysResult").innerHTML = keys.join('<br>');
 }
 
-function getValues() {
-    const values = Object.values(object);
-    document.getElementById("valuesResult").innerHTML = "Values: " + JSON.stringify(values);
+function getValues(){
+    var objects = Object.values(object);
+    document.getElementById("valuesResult").innerHTML = objects.join('<br>');
 }
 
-function getEntries() {
-    const entries = Object.entries(object);
-    document.getElementById("entriesResult").innerHTML = "Entries: " + JSON.stringify(entries);
+function getEntries(){
+    var entries = Object.entries(object);
+    document.getElementById("entriesResult").innerHTML = entries.join('<br>');
+}
+function assignProperty(){
+    var new_Property = document.getElementById("newProperty").value;
+    var new_value=document.getElementById("newValue").value;
+    object[new_Property]=new_value;
+    document.getElementById("assignResult").innerHTML = "Property added";
+}
+function stringifyObject(){
+    console.log(JSON.stringify(object, null, 10));
+    document.getElementById("stringifyResult").innerHTML = `check console`;
 }
 
-function assignProperty() {
-    const propertyName = document.getElementById("newProperty").value;
-    const propertyValue = document.getElementById("newValue").value;
+var groupbyobject = [
+    {name: "John", age: 25, city: "NYC"},
+    {name: "Jane", age: 30, city: "LA"},
+    {name: "Bob", age: 25, city: "NYC"},
+    {name: "Alice", age: 30, city: "LA"}
+];
+
+function groupByObject(){
     
-    if (propertyName && propertyValue) {
-        const newObject = Object.assign({}, object, { [propertyName]: propertyValue });
-        object = newObject;
-        document.getElementById("assignResult").innerHTML = 
-            `Added property "${propertyName}": "${propertyValue}". Updated object: ` + JSON.stringify(object);
-    } else {
-        document.getElementById("assignResult").innerHTML = "Please enter both property name and value";
-    }
+    var groupedByAge = Object.groupBy(groupbyobject, ({age}) => age);
+    document.getElementById("obj").innerHTML = "Original array: <br/>" + JSON.stringify(groupbyobject);
+    document.getElementById("groupby").innerHTML = "Grouped by age: <br/>" + JSON.stringify(groupedByAge);
 }
-
-
-function stringifyObject() {
-    const jsonString = JSON.stringify(object);
-    document.getElementById("stringifyResult").innerHTML = "JSON String: " + jsonString;
-}
-
-window.onload = function() {
-    displayObject();
-};

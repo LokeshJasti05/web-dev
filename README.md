@@ -1,2 +1,1 @@
-"# web-dev" 
-"# web-dev" 
+these aree the basic web dev (html css js tasked i did while learning webdeb and relearning it to rebuild y foundation)

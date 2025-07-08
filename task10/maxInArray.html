@@ -57,12 +57,7 @@
       margin-bottom: 1rem;
     }
 
-    @media (max-width: 600px) {
-      .input {
-        margin: 1rem;
-        padding: 1.5rem;
-      }
-    }
+    
   </style>
 </head>
 <body>
@@ -72,7 +67,6 @@
       <button onclick="createArray()">Create Array</button>
     </div>
     <div class="inputs" id="inputs">
-      <!-- Dynamic rows go here -->
     </div>
     <button id="findBtn" onclick="findMaxMin()" style="display: none;">Find Max and Min</button>
     <p id="output"></p>
@@ -84,7 +78,7 @@
     function createArray() {
       const size = Number(document.getElementById("size").value);
       const rowsContainer = document.getElementById("inputs");
-      rowsContainer.innerHTML = ''; 
+      rowsContainer.innerHTML = '';
 
       for (let i = 0; i < size; i++) {
         const new_row = document.createElement("div");
@@ -101,8 +95,9 @@
           if (rowInput.length > 0) {
             const rowArr = rowInput.split(/\s+/).map(Number);
             jaggedArray.push(rowArr);
+            
           } else {
-            jaggedArray.push([]);
+            alert(`Row ${i + 1} is empty. Please enter values.`);
           }
         }
         storeButton.disabled = true;
@@ -124,6 +119,7 @@
                 }
             }
         }
+        document.getElementById("output").innerHTML = `Max: ${max}, Min: ${min}`;
     }
   </script>
 </body>
