@@ -35,16 +35,3 @@ function stringifyObject(){
     document.getElementById("stringifyResult").innerHTML = `check console`;
 }
 
-var groupbyobject = [
-    {name: "John", age: 25, city: "NYC"},
-    {name: "Jane", age: 30, city: "LA"},
-    {name: "Bob", age: 25, city: "NYC"},
-    {name: "Alice", age: 30, city: "LA"}
-];
-
-function groupByObject(){
-    
-    var groupedByAge = Object.groupBy(groupbyobject, ({age}) => age);
-    document.getElementById("obj").innerHTML = "Original array: <br/>" + JSON.stringify(groupbyobject);
-    document.getElementById("groupby").innerHTML = "Grouped by age: <br/>" + JSON.stringify(groupedByAge);
-}

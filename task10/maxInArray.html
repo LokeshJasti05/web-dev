@@ -107,8 +107,8 @@
     }
 
     function findMaxMin(){
-        var min = Infinity;
-        var max = -Infinity;
+        var min = jaggedArray[0][0];
+        var max = jaggedArray[0][0];
         for(var i = 0; i < jaggedArray.length; i++) {
             for(var j = 0; j < jaggedArray[i].length; j++) {
                 if(jaggedArray[i][j] < min) {
