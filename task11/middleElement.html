@@ -4,6 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        body{
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(237, 218, 200);
+        }
+        .main{
+            width: 100%;
+            max-width: 400px;
+            margin: 0;
+            text-align: center;
+            background-color: rgb(252, 217, 187);
+            padding: 2rem 1rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .input{
+            background-color: bisque;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .output{
+            background-color: rgb(239, 207, 165);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .input, .output{
+            margin: 1rem 
+        }
+
+        
+
+    </style>
 </head>
 <body>
     <div class="main">
@@ -16,7 +53,7 @@
             <div class="output">
                 
     <label>Middle Element</label>
-    <p class="output"></p>
+    <p id="output"></p>
             </div>
 </div>
     
@@ -25,13 +62,21 @@
 
 <script>
 function find(){
-    var input = document.getElementById("arrayInput").value.split(',').join(',');
-    var array = input.split(',').map(Number); 
-    var length = array.length;
+    var input = document.getElementById("arrayInput").value.split(',');
+console.log(input);
+    var length = input.length;
 
-   
+    if(length === 0){
+        document.getElementById("output").innerText = "Please enter a valid array.";
+        return;
+    }
+    
     var middle = Math.floor(length/2);
-
-    document.getElementsByClassName("output").innerHTML = input[middle];
+if(length%2!=0){
+    document.getElementById("output").innerHTML = input[middle];
+}
+else{
+    document.getElementById("output").innerHTML = input[middle-1] + " and " + input[middle];
+}
 }
 </script>
