@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="input">
+    <label>Enter your array</label>
+    <input type="text" id="arrayInput" placeholder="enter your array with comma" >
+            </div>
+            <button onclick="find()">submit array</button>
+
+            <div class="output">
+                
+    <label>Middle Element</label>
+    <p class="output"></p>
+            </div>
+</div>
+    
+</body>
+</html>
+
+<script>
+function find(){
+    var input = document.getElementById("arrayInput").value.split(',').join(',');
+    var array = input.split(',').map(Number); 
+    var length = array.length;
+
+   
+    var middle = Math.floor(length/2);
+
+    document.getElementsByClassName("output").innerHTML = input[middle];
+}
+</script>

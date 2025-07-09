@@ -117,13 +117,20 @@
     })
 
     function find(){
+        document.getElementById("index").innerHTML = "";
         var searchValue = document.getElementById("searchValue").value;
+        var res = "";
         for(var i=0;i<arrayOfObjects.length;i++){
             if(arrayOfObjects[i].age == searchValue){
-                document.getElementById("index").innerHTML = `found at index:${i} `+` ${JSON.stringify(arrayOfObjects[i])}`;
+               res = `found at index: ${i} `+` ${JSON.stringify(arrayOfObjects[i])}`;
+               break;
             }
         }
 
-
+        if(res === ""){
+            document.getElementById("index").innerHTML = "No match found";
+        } else {
+            document.getElementById("index").innerHTML = res;
+        }
     }
 </script>
