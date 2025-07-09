@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input Two Arrays</title>
+    <title>Search Array of Objects</title>
     <style>
         body {
             background: #f7f7f7;
@@ -84,14 +84,18 @@
 </head>
 <body>
     <div class="container">
-        <h2>Input Two Arrays</h2>
+        <h1>Search Array of Objects</h3>
         <div class="input-arrays">
             <div>
-                <label for="array1">Array 1 (comma separated):</label>
-                <input type="text" id="array1" placeholder="e.g. 1,2,3,4">
+
+                <h3 for="arrayOfObjects">Array of Objects:</h3>
+                <h4  id="arrObj"></h3>
+                <label for="searchValue">Enter value to search:</label>
+                <input type="text" id="searchValue" placeholder="e.g. 28">
             </div>
             
-            <button id="submitArrays" onclick="find()">Submit</button>
+            
+            <button id="submitArrays" onclick="find()">Search</button>
         </div>
         <div id="index" style="margin-top:18px; color:#2d4a2d; font-weight:500;"></div>
         
@@ -100,13 +104,26 @@
 </html>
 
 <script>
+    var arrayOfObjects = [
+        {name: "abc", age: 25, job: "Engineer"},
+        {name: "davd", age: 30, job: "Designer"},
+        {name: "vf", age: 35, job: "Manager"},
+        {name: "eda", age: 28, job: "Developer"}
+    ];
+
+
+    document.addEventListener("DOMContentLoaded",function(){
+        document.getElementById("arrObj").innerHTML = JSON.stringify(arrayOfObjects);
+    })
+
     function find(){
-        var array = document.getElementById("array1").value.split(',');
-        for(var i=0;i<array.length;i++){
-            if(array[i]>100){
-                document.getElementById("index").innerHTML = "The first number greater than 100 is at index: " + i;
-                return;
+        var searchValue = document.getElementById("searchValue").value;
+        for(var i=0;i<arrayOfObjects.length;i++){
+            if(arrayOfObjects[i].age == searchValue){
+                document.getElementById("index").innerHTML = `found at index:${i} `+` ${JSON.stringify(arrayOfObjects[i])}`;
             }
         }
+
+
     }
 </script>
