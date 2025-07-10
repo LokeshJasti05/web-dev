@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <H3>enter array</H3>
+        <input type="text" id="arrayInput" placeholder="1,2,3,4,5,6,7,8,9">
+        <h3>enter element to swap</h3>
+        <input type="number" id="element_toswap" placeholder="element to swap">
+        <button onclick="store()">store array</button>
+    </div>
+    <div class="left_swap">
+        <h5>enter number of times to shift left</h5>
+        <input type="number" id="left" placeholder="left count">
+        <button id="left_shift" onclick="left_shift()" disabled>left shift</button>
+    </div>
+    <div class="right_swap">
+        <h5>enter number of times to shift right</h5>
+        <input type="number" id="right" placeholder="right swap count">
+        <button id="right_shift" onclick="right_shift()" disabled>Right SHift</button>
+    </div>
+</body>
+</html>
+
+<style>
+    body{
+        display: flex;
+        align-items: center;
+        align-self: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .main{
+        box-sizing: border-box;
+        background-color: antiquewhite;
+        
+    }
+</style>
+
+<script>
+function store(){
+    var array = document.getElementById("arrayInput").value.split(",");
+    var swap_element = document.getElementById("element_toswap").value;
+    document.getElementById("left_shift").disabled = false;
+    document.getElementById("right_shift").disabled = false;
+    console.log(array)
+}
+
+    function left_shift(){
+        var array = document.getElementById("arrayInput").value.split(",").map(Number);
+        var left = parseInt(document.getElementById("left").value);
+        var element_toswap = parseInt(document.getElementById("element_toswap").value);
+        var element = array[element_toswap];
+        
+        while (left > 0 && element_toswap > 0) {
+        swap(array, element_toswap - 1, element_toswap);
+        element_toswap--;  // update index after shift
+        left--;
+    }
+        console.log(array)
+    }
+    function right_shift(){
+        var array = document.getElementById("arrayInput").value.split(",").map(Number);
+        var left = parseInt(document.getElementById("left").value);
+        var element_toswap = parseInt(document.getElementById("element_toswap").value);
+        var element = array[element_toswap];
+        
+        while (left > 0 && element_toswap > 0) {
+        swap(array, element_toswap , element_toswap+1);
+        element_toswap--;  // update index after shift
+        left--;
+    }
+        console.log(array)
+    }
+
+
+    function swap(arr,i,j){
+        var temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+</script>
+
