@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Array</h3>
+    <input placeholder="elements to add seperated by ," id="array_add">
+    <button onclick="add()">Submit</button>
+    <p id="array"></p>
+
+</body>
+</html>
+
+<script>
+    var array = []
+    function add(){
+        var elements_to_add= document.getElementById("array_add").value.split(",");
+        array.push(elements_to_add)
+        array = array.flat();
+        document.getElementById("array").innerHTML=array.join(",")
+    }
+</script>
