@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="input_key">
+        <label>Input the property</label>
+        <input id="property"  placeholder="enter propery">
+
+        <label > input value</label>
+        <input id="value" placeholder="enter value ">
+        <button onclick="change()">exchange proeprty</button>
+        <p id="output"></p>
+    </div>
+
+
+</body>
+</html>
+
+<script>
+    function change(){
+        var key, temp, value;
+        key = document.getElementById("property").value;
+        value= document.getElementById("value").value;
+        
+        temp = key;
+        key = value;
+        value = temp;
+
+        document.getElementById("output").innerHTML=`Proeprty : ${key} <br/> value : ${value}` 
+    }
+
+</script>
