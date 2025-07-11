@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="name">name </label>
+    <input type="text" id="name" placeholder="name?">
+    <label for="price">price</label>
+    <input id="price" type="text" placeholder="price">
+    <label for="quanity">quanity</label>
+    <input id="quanity" type="text" placeholder="quanity">
+    <button onclick="submit()">Submit</button>
+
+    <p id="print"></p>
+</body>
+</html>
+
+<script>
+    var array = [];
+    function submit(){
+        var name1 =document.getElementById("name").value;
+        var price1 = parseFloat(document.getElementById("price").value);
+        var quantity1 = parseInt(document.getElementById("quanity").value);
+        
+
+        var obj = {
+             name : name1,
+             price : price1,
+             quantity : quantity1,
+        }
+        array.push(obj)
+
+        document.getElementById("print").innerHTML = JSON.stringify(array, null, 2);
+    }
+
+</script>
