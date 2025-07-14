@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Enter the Name of the student</label>
+    <input placeholder="enter name" id="name">
+    <label for="department"> department</label>
+    <input type="text" placeholder="enter the department of the student" id="department">
+    <label for="age">age</label>
+    <input type="text" placeholder="age" id="age">
+    <button onclick="addObject()">Submit</button>
+    <button onclick="find()">find average and median</button>
+    <p id="output"></p>
+</body>
+</html>
+
+<script>
+     var arrOfObject = [];
+
+    function addObject(){
+        var name= document.getElementById("name").value;
+        var department = document.getElementById("department").value;
+        var age = document.getElementById("age").value;
+
+        let student = {
+            name  : name,
+            department : department,
+            age : Number(age)
+        }
+
+        arrOfObject.push(student);
+    }
+
+        function find(){
+            var sum =0;
+            var total=0;
+            var median=0;
+            var ages = [];
+            for(var i=0;i<arrOfObject.length;i++){
+                ages.push(arrOfObject[i].age)
+                sum+= arrOfObject[i].age;
+                total++;
+            }
+            ages.sort((a, b) => a - b);
+            var middle = Math.floor(ages.length/2)
+            if (ages.length % 2 == 0){
+                median = (ages[middle-1] + ages[middle])/2;
+            }
+            else{
+                median = ages[middle];
+            }
+            document.getElementById("output").innerHTML=`Sum is ${sum} <br/> Average is ${sum/total} <br/> median is ${median}`;
+        }
+</script>
