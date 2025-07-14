@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Enter the Name of the student</label>
+    <input placeholder="enter name" id="name">
+    <label for="department"> department</label>
+    <input type="text" placeholder="enter the department of the student" id="department">
+    <label for="year">Year</label>
+    <input type="text" placeholder="year" id="year">
+    <button onclick="addObject()">Submit</button>
+    <button onclick="sort()">Group data</button>
+    <p id="output"></p>
+</body>
+</html>
+
+<script>
+    var arrOfObject = [];
+
+    function addObject(){
+        var name= document.getElementById("name").value;
+        var department = document.getElementById("department").value;
+        var year = document.getElementById("year").value;
+
+        let student = {
+            name  : name,
+            department : department,
+            year : Number(year)
+        }
+
+        arrOfObject.push(student);
+    }
+
+    function sort(){
+        var arr_of_visited = [];
+        var current
+        for(var i =0;i < arrOfObject.length;i++){
+             let dept = arrOfObject[i].department;
+             if (!arr_of_visited.includes(dept)) {
+                document.getElementById("output").innerHTML+= `<br/> <h1>Department = ${dept}<h1>`
+                arr_of_visited.push(dept);
+                current = dept;
+                for(var j=0;j<arrOfObject.length;j++){
+                    if(arrOfObject[j].department == dept){
+                        document.getElementById("output").innerHTML += `<br/> Name: ${arrOfObject[j].name}, Year: ${arrOfObject[j].year}\n`;
+                    }
+                }
+             }
+        }
+    }
+
+</script>
