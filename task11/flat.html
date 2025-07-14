@@ -7,9 +7,17 @@
 </head>
 <body>
     <input placeholder="enter the array seperated by ','" id="array_input">
+    <button onclick="flat()">Flatten Array</button>
 </body>
 </html>
 
 <script>
-    
+    function flat(){
+        var array = document.getElementById("array_input").value
+        array = array.replaceAll('[', '');
+        array = array.replaceAll(']', '');
+         array = array.split(',');
+        array = array.map(x => Number(x.trim()));
+        console.log(array)
+    }
 </script>
