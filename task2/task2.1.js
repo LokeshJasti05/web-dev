@@ -8,13 +8,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const saveChangesBtn = document.getElementById("saveChangesBtn");
     const resetBtn = document.getElementById("resetBtn");
 
-    // Initially hide edit button and reset button
     editBtn.style.display = "none";
     resetBtn.style.display = "none";
 
-    // Handle save button click
     saveBtn.addEventListener("click", function() {
-        // Get values from input fields
         const companyName = document.getElementById("companyName").value;
         const companyEmail = document.getElementById("companyEmail").value;
         const joiningDate = document.getElementById("joiningDate").value;

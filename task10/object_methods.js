@@ -22,7 +22,7 @@ function getValues(){
 
 function getEntries(){
     var entries = Object.entries(object);
-    document.getElementById("entriesResult").innerHTML = entries.join('<br>');
+    document.getElementById("entriesResult").innerHTML = entries.map(([key, value]) => `${key}: ${value}`).join('<br>');
 }
 function assignProperty(){
     var new_Property = document.getElementById("newProperty").value;

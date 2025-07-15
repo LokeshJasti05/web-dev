@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>pirce * quanity</title>
 </head>
 <body>
     <label for="name">name </label>
@@ -24,7 +24,7 @@
         var name1 =document.getElementById("name").value;
         var price1 = parseFloat(document.getElementById("price").value);
         var quantity1 = parseInt(document.getElementById("quanity").value);
-        
+        var total=0;
 
         var obj = {
              name : name1,
@@ -32,8 +32,11 @@
              quantity : quantity1,
         }
         array.push(obj)
-
-        document.getElementById("print").innerHTML = JSON.stringify(array, null, 2);
+        for(var i=0;i<array.length;i++){
+            total += array[i].price * array[i].quantity;
+        }
+        document.getElementById("print").innerHTML = `${JSON.stringify(array, null, 2)} <br/> <h3> total = ${total}</h3>`;
+        
     }
 
 </script>

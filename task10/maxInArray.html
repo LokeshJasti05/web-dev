@@ -12,7 +12,7 @@
     }
 
     body {
-      background: linear-gradient(135deg, #c6cce4 0%, #e8e9fd 100%);
+
       min-height: 100vh;
       display: flex;
       justify-content: center;
@@ -42,7 +42,7 @@
     }
 
     button {
-      background: linear-gradient(135deg, #66eab1 0%, #17572d 100%);
+      background: #86cd88;
       color: white;
       border: none;
       padding: 12px 25px;
@@ -62,6 +62,7 @@
 </head>
 <body>
   <div class="input">
+    <h5>Task 4:Find the maximum number in a jagged array of numbers or array of number </h5>
     <div class="size">
       <input type="text" id="size" placeholder="Enter the size of the array" />
       <button onclick="createArray()">Create Array</button>
@@ -81,7 +82,7 @@
       rowsContainer.innerHTML = '';
 
       for (let i = 0; i < size; i++) {
-        const new_row = document.createElement("div");
+        var new_row = document.createElement("div");
         new_row.innerHTML = `<input type="text" id="row-${i}" placeholder="Enter elements for row ${i + 1} (space separated)">`;
         rowsContainer.appendChild(new_row);
       }

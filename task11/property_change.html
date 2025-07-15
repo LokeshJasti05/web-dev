@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>key value change</title>
 </head>
 <body>
     <div class="input_key">
@@ -22,15 +22,19 @@
 
 <script>
     function change(){
-        var key, temp, value;
-        key = document.getElementById("property").value;
-        value= document.getElementById("value").value;
-        
-        temp = key;
-        key = value;
-        value = temp;
+    var key, temp, value;
+    key = document.getElementById("property").value;
+    value = document.getElementById("value").value;
 
-        document.getElementById("output").innerHTML=`Proeprty : ${key} <br/> value : ${value}` 
-    }
+    var obj = {};
+    obj[key] = value;
+
+    temp = key;
+    key = value;
+    value = temp;
+
+    document.getElementById("output").innerHTML = `Property: ${key} <br/> Value: ${value}`;
+}
+
 
 </script>
