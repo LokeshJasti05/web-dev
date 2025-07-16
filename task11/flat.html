@@ -6,10 +6,22 @@
     <title>flatting the array</title>
 </head>
 <body>
+    <h3>Task 6:Write a function to flatten a nested object. --done</h3>
     <input placeholder="enter the array seperated by ','" id="array_input">
     <button onclick="flat()">Flatten Array</button>
+    <p id="output"></p>
 </body>
 </html>
+
+<style>
+    body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
 
 <script>
     function flat(){
@@ -18,6 +30,7 @@
         array = array.replaceAll(']', '');
         array = array.split(',');
         array = array.map(x => Number(x.trim()));
+        document.getElementById("output").innerHTML= array
         console.log(array)
     }
 </script>
