@@ -166,6 +166,9 @@ form.appendChild(document.createElement("br"));
     var location_head = document.createElement("th");
     location_head.textContent = "Location";
     header_container.appendChild(location_head);
+    var action_head = document.createElement("th");
+    action_head.textContent = "Action";
+    header_container.appendChild(action_head);
     table.appendChild(header_container);
 
 
@@ -175,9 +178,8 @@ function createTable(event){
     event.preventDefault();
 
     name_regexp = /^[a-zA-Z\s]+$/;
-    age_regexp = /^[0-9]{2} [^a-zA-Z]$/;
+    age_regexp = /^\d{1,3}$/;
     
-    table.appendChild(header_container);
 
     document.body.appendChild(table);
 
@@ -244,5 +246,14 @@ disability.forEach(d => {
     location_cell.textContent = location;
     row.appendChild(location_cell);
     table.appendChild(row);
+    
+    var action_cell = document.createElement("td");
+    var delete_button = document.createElement("button");
+    delete_button.textContent = "Delete";
+    delete_button.addEventListener("click", function() {
+        table.removeChild(row);
+    }); 
+    action_cell.appendChild(delete_button);
+    row.appendChild(action_cell);
 
 }
