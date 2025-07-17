@@ -255,6 +255,8 @@ disability.forEach(d => {
     delete_button.textContent = "Delete";
     delete_button.addEventListener("click", function() {
         table.removeChild(row);
+
+
         // Update serial numbers after deletion
         for(let i = 0; i < table.rows.length; i++){
             table.rows[i].cells[0].innerHTML = `<p>${i + 1}</p>`;
@@ -263,9 +265,20 @@ disability.forEach(d => {
     action_cell.appendChild(delete_button);
     row.appendChild(action_cell);
     
+
+
     // Update serial numbers after adding new row
     for(let i = 0; i < table.rows.length; i++){
         table.rows[i].cells[0].innerHTML = `<p>${i + 1}</p>`;
     }
 
+
+    var edit_button = document.createElement("button");
+    edit_button.textContent = "Edit";
+    
+}
+
+
+function editRow(button) {
+    var name = document.getE
 }
