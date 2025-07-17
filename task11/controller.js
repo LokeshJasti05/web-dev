@@ -247,6 +247,9 @@ disability.forEach(d => {
     row.appendChild(location_cell);
     table.appendChild(row);
     
+ 
+
+
     var action_cell = document.createElement("td");
     var delete_button = document.createElement("button");
     delete_button.textContent = "Delete";
