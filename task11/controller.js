@@ -173,7 +173,7 @@ form.appendChild(document.createElement("br"));
     header_container.appendChild(action_head);
     table.appendChild(header_container);
 
-
+    document.body.appendChild(table);
 
 
 function createTable(event){
@@ -183,7 +183,6 @@ function createTable(event){
     age_regexp = /^\d{1,3}$/;
     
 
-    document.body.appendChild(table);
 
 
     var si_no = document.querySelectorAll("table tr").length;
@@ -257,6 +256,7 @@ disability.forEach(d => {
 
     var action_cell = document.createElement("td");
     var delete_button = document.createElement("button");
+    delete_button.id = "delete_button";
     delete_button.textContent = "Delete";
     delete_button.addEventListener("click", function() {
         if(confirm("Are you Sure you want to delete the row")){
@@ -286,6 +286,7 @@ disability.forEach(d => {
     edit_button.addEventListener("click", function( ) {
         editRow(this);});
 
+
 //appending the buttons
     action_cell.appendChild(edit_button);
     action_cell.appendChild(delete_button);
@@ -297,21 +298,20 @@ function editRow(button) {
     var row = button.closest('tr');
     row.id = "editing_row";
 
-    // Disable the submit button to avoid adding a new row
+
     var submitButton = document.getElementById("submit_Button");
     submitButton.disabled = true;
 
-    // Prefill form inputs with selected row data
     document.getElementById("name").value = row.cells[1].textContent;
     document.getElementById("age").value = row.cells[2].textContent;
 
-    // Gender
+    // gender
     var genderValue = row.cells[3].textContent;
     document.getElementsByName("gender").forEach(g => {
         g.checked = (g.value === genderValue);
         gender[g.value] = (g.value === genderValue);
     });
-
+//disability
     var disabilityValue = row.cells[4].textContent;
     document.getElementsByName("disability").forEach(d => {
         d.checked = (d.value === disabilityValue);
@@ -356,6 +356,7 @@ function saveRow(event) {
         return;
     }
     
+
     var submit_Button = document.getElementById("submit_Button");
     submit_Button.disabled = false;
 
@@ -367,14 +368,15 @@ function saveRow(event) {
 
     row.removeAttribute("id");
 
-    var saveButton = document.getElementById("save_button");
-    if (saveButton) {
-        form.removeChild(saveButton);
-    }
+    
 
     document.getElementById("name").value = "";
     document.getElementById("age").value = "";
     document.getElementsByName("gender").forEach(g => g.checked = false);
     document.getElementsByName("disability").forEach(d => d.checked = false);
     document.getElementById("select_area").value = "";
+    var saveButton = document.getElementById("save_button");
+        if (saveButton) {
+            form.removeChild(saveButton);
+        }
 }
