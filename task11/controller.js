@@ -47,6 +47,7 @@
     var input = document.createElement("input");
     input.type = "radio";
     input.name = "gender";
+    input.id = key;
     input.value = key;
 
     input.addEventListener("change",function(){
@@ -82,7 +83,7 @@ for(let ket in disablility){
             cb.checked = false;
         });
 
-// Check only the one that was clicked
+// for checking only theone that was clicked
         this.checked = true;
 
 
@@ -130,10 +131,11 @@ form.appendChild(document.createElement("br"));
 
     form.appendChild(select_area);
 
-    //location end
+//location end
 
     form.appendChild(document.createElement("br"));
     var submitButton = document.createElement("button");
+    submitButton.id = "submit_Button";
     submitButton.textContent = "Submit";
     submitButton.addEventListener("click", createTable);
     form.appendChild(submitButton);
@@ -191,10 +193,7 @@ function createTable(event){
     var disability = document.getElementsByName("disability");
     var location = document.getElementById("select_area").value;
     
-    if("si_no" === "" || name === "" || age === "" || location === "" || selectedGender === "" || selectedDisability === ""){
-        alert("Please fill all the fields");
-        return;
-    }
+   
 
    if(!name_regexp.test(name)){
         alert("Please enter a valid name");
@@ -219,6 +218,12 @@ disability.forEach(d => {
         selectedDisability = d.value; 
     }
 });
+
+     if("si_no" === "" || name === "" || age === "" || location === "" || selectedGender === "" || selectedDisability === ""){
+        alert("Please fill all the fields");
+        return;
+    }
+
     console.log(si_no, name, age, selectedGender, selectedDisability, location);
     var row = document.createElement("tr");
 
@@ -254,20 +259,23 @@ disability.forEach(d => {
     var delete_button = document.createElement("button");
     delete_button.textContent = "Delete";
     delete_button.addEventListener("click", function() {
+        if(confirm("Are you Sure you want to delete the row")){
         table.removeChild(row);
 
 
-        // Update serial numbers after deletion
         for(let i = 0; i < table.rows.length; i++){
             table.rows[i].cells[0].innerHTML = `<p>${i + 1}</p>`;
         }
+    }else{
+        return;
+    }
     }); 
-    action_cell.appendChild(delete_button);
-    row.appendChild(action_cell);
+    
+    
     
 
 
-    // Update serial numbers after adding new row
+// Update serial numbers after adding new row
     for(let i = 0; i < table.rows.length; i++){
         table.rows[i].cells[0].innerHTML = `<p>${i + 1}</p>`;
     }
@@ -275,10 +283,98 @@ disability.forEach(d => {
 
     var edit_button = document.createElement("button");
     edit_button.textContent = "Edit";
-    
+    edit_button.addEventListener("click", function( ) {
+        editRow(this);});
+
+//appending the buttons
+    action_cell.appendChild(edit_button);
+    action_cell.appendChild(delete_button);
+    row.appendChild(action_cell);
 }
 
 
 function editRow(button) {
-    var name = document.getE
+    var row = button.closest('tr');
+    row.id = "editing_row";
+
+    // Disable the submit button to avoid adding a new row
+    var submitButton = document.getElementById("submit_Button");
+    submitButton.disabled = true;
+
+    // Prefill form inputs with selected row data
+    document.getElementById("name").value = row.cells[1].textContent;
+    document.getElementById("age").value = row.cells[2].textContent;
+
+    // Gender
+    var genderValue = row.cells[3].textContent;
+    document.getElementsByName("gender").forEach(g => {
+        g.checked = (g.value === genderValue);
+        gender[g.value] = (g.value === genderValue);
+    });
+
+    var disabilityValue = row.cells[4].textContent;
+    document.getElementsByName("disability").forEach(d => {
+        d.checked = (d.value === disabilityValue);
+        disablility[d.value] = (d.value === disabilityValue);
+    });
+
+    document.getElementById("select_area").value = row.cells[5].textContent;
+
+    if (!document.getElementById("save_button")) {
+        var saveButton = document.createElement("button");
+        saveButton.textContent = "Save";
+        saveButton.id = "save_button";
+        saveButton.addEventListener("click", saveRow);
+        form.appendChild(saveButton);
+    }
+}
+
+
+function saveRow(event) {
+    event.preventDefault();
+
+
+    var row = document.getElementById("editing_row");
+
+    var name = document.getElementById("name").value;
+    var age = document.getElementById("age").value;
+
+    var selectedGender = "";
+    document.getElementsByName("gender").forEach(g => {
+        if (g.checked) selectedGender = g.value;
+    });
+
+    var selectedDisability = "";
+    document.getElementsByName("disability").forEach(d => {
+        if (d.checked) selectedDisability = d.value;
+    });
+
+    var location = document.getElementById("select_area").value;
+
+    if (name === "" || age === "" || selectedGender === "" || selectedDisability === "" || location === "") {
+        alert("Please fill all fields before saving.");
+        return;
+    }
+    
+    var submit_Button = document.getElementById("submit_Button");
+    submit_Button.disabled = false;
+
+    row.cells[1].textContent = name;
+    row.cells[2].textContent = age;
+    row.cells[3].textContent = selectedGender;
+    row.cells[4].textContent = selectedDisability;
+    row.cells[5].textContent = location;
+
+    row.removeAttribute("id");
+
+    var saveButton = document.getElementById("save_button");
+    if (saveButton) {
+        form.removeChild(saveButton);
+    }
+
+    document.getElementById("name").value = "";
+    document.getElementById("age").value = "";
+    document.getElementsByName("gender").forEach(g => g.checked = false);
+    document.getElementsByName("disability").forEach(d => d.checked = false);
+    document.getElementById("select_area").value = "";
 }
